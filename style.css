@@ -142,10 +142,6 @@ img:hover{
         margin: 35px 35px 0;
     }
 
-    .nav {
-        display: none;
-    }
-
     .jumbotron {
         background-image: url("assets/jumbotron-small.png");
         flex-basis: 260px;
