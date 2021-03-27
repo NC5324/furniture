@@ -223,13 +223,6 @@ img:hover{
         font-size: 40px;
     }
 
-    .nav {
-        display: flex;
-    }
-
-    .nav h3 {
-        margin-left: 15px;
-    }
 
     h2 {
         font-size: 22px;
@@ -271,6 +264,10 @@ img:hover{
 @media screen and (min-width: 1025px) {
     .container .viewport {
         height: 100vh;
+    }
+
+    .nav {
+        display: flex;
     }
 
     .nav h3 {
