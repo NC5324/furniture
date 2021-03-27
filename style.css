@@ -38,7 +38,7 @@
 }
 
 .nav h3 {
-    font-family: "Arial", sans-serif;
+    font-family: "Roboto", "Arial", sans-serif;
     font-weight: 550;
     font-size: 15px;
 }
@@ -117,17 +117,17 @@
 }
 
 h1 {
-    font-family: "Arial", sans-serif;
+    font-family: "Roboto", "Arial", sans-serif;
     font-weight: 600; /* slightly lower than bold=700 */
 }
 
 h2 {
-    font-family: "Arial", sans-serif;
+    font-family: "Roboto", "Arial", sans-serif;
     font-weight: 600; /* slightly lower than bold=700 */
 }
 
 p {
-    font-family: "Arial", sans-serif;
+    font-family: "Roboto", "Arial", sans-serif;
     font-weight: 400; /*normal*/
     line-height: 24px;
     text-align: justify-all;
