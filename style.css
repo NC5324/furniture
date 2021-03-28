@@ -29,7 +29,6 @@
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
-
 }
 
 .nav {
@@ -75,17 +74,18 @@
 }
 
 .jumbotron {
-    min-height: 400px;
-    background: transparent;
-    /*background-image: url("assets/01.jpg");*/
+    background-image: url("assets/01.jpg");
     /*background-repeat: no-repeat;
     background-size: cover;
     background-position:  center 80%;*/
 
-    /*background-attachment: fixed;
+    background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;*/
+    background-size: cover;
+
+    display: flex;
+    justify-content: center;
 }
 
 .section1 {
@@ -151,27 +151,76 @@
     flex-basis: 280px;
     justify-self: flex-end;
 
-    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    padding: 40px 10%;
+}
+
+.footer-section {
+    margin-right: 30px;
+    flex: 0  1 400px;
+
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.subsection-wrapper {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.subsection {
+    display: flex;
+    flex-flow: column nowrap;
+    flex: 1 0 auto;
+}
+
+.footer-section h2::after {
+    display: block;
+    content: "";
+    background: white;
+    height: 2px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.footer-section a {
+    font-family: "Roboto", "Open Sans", "Arial", sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    cursor: pointer;
+    margin-bottom: 8px;
+}
+
+.footer-section a:link {
+    text-decoration: none;
+    color: white;
+}
+
+.footer-section a:visited {
+    text-decoration: none;
+    color: white;
+}
+
+.footer-section a:hover {
+    text-decoration: underline;
 }
 
 #up {
     display: block;
     position: fixed;
     z-index: 999;
-    bottom: 10px;
-    right: 10px;
-
-    width: 100px;
-    height: 100px;
+    bottom: 5%;
+    right: 30px;
 
     color: #FF3E57;
-    background: lightsalmon;
 
     cursor: pointer;
 }
 
 #up:hover {
-    background: darksalmon;
+    transform: scale(1.2);
 }
 
 h1 {
@@ -235,7 +284,16 @@ img:hover{
     }
 
     .footer {
-        flex-basis: 645px;
+        flex-direction: column;
+    }
+
+    .footer-section {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .subsection-wrapper {
+        flex-flow: column nowrap;
     }
 
     h1 {
@@ -296,7 +354,7 @@ img:hover{
 
 @media screen and (min-width: 426px) and (max-width: 1024px) {
     .jumbotron {
-        background-image: url("assets/01.jpg");
+        background-image: url("assets/jumbotron-medium.png");
         background-attachment: scroll;
         background-position: center 80%;
         flex-basis: 400px;
