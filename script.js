@@ -44,6 +44,9 @@ $(document).ready(function (){
     $('#insta').click(function(){
         window.location.href="http://instagram.com"
     })
+
+    const image = document.getElementsByClassName('thumbnail');
+    new simpleParallax(image);
 })
 
 
