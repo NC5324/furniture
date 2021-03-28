@@ -4,6 +4,11 @@
     box-sizing: border-box;
 
     background-color: transparent;
+    scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+    width: 0;
 }
 
 .container {
@@ -37,23 +42,48 @@
     color: #FF3E57;
 }
 
+.nav h3:hover {
+    cursor: pointer;
+}
+
 .nav h3 {
     font-family: "Roboto", "Arial", sans-serif;
     font-weight: 500;
     font-size: 15px;
+
+    position: relative;
 }
 
-.nav h3:hover {
-    border-bottom: 2px solid #FF3E57;
-    transform: translate(0, 1px);
-    cursor: pointer;
+.nav h3::after {
+    display: block;
+    content: "";
+
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+
+    width: 0;
+    height: 2px;
+
+    background: #FF3E57;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+}
+
+.nav h3:hover::after {
+    width: 100%;
+    left: 0;
 }
 
 .jumbotron {
     background-image: url("assets/01.jpg");
+    /*background-repeat: no-repeat;
+    background-size: cover;
+    background-position:  center 80%;*/
+
+    background-attachment: fixed;
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-position:  center 80%;
 }
 
 .section1 {
@@ -109,12 +139,37 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position:  center 80%;
+
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 6px 0px  rgba(0,0,0,0.3);
 }
 
 .footer {
     background-color: #FF3E57;
     flex-basis: 280px;
     justify-self: flex-end;
+
+    position: relative;
+}
+
+#up {
+    display: block;
+    position: fixed;
+    z-index: 999;
+    bottom: 10px;
+    right: 10px;
+
+    width: 100px;
+    height: 100px;
+
+    color: #FF3E57;
+    background: lightsalmon;
+
+    cursor: pointer;
+}
+
+#up:hover {
+    background: darksalmon;
 }
 
 h1 {
@@ -145,6 +200,8 @@ img:hover{
 
     .jumbotron {
         background-image: url("assets/jumbotron-small.png");
+        background-attachment: scroll;
+        background-position: 0 80%;
         flex-basis: 260px;
 
         margin-top: 18px;
@@ -237,7 +294,9 @@ img:hover{
 
 @media screen and (min-width: 426px) and (max-width: 1024px) {
     .jumbotron {
-        background-image: url("assets/jumbotron-medium.png");
+        background-image: url("assets/01.jpg");
+        background-attachment: scroll;
+        background-position: center 80%;
         flex-basis: 400px;
 
         margin-bottom: 40px;
