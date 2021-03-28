@@ -75,15 +75,17 @@
 }
 
 .jumbotron {
-    background-image: url("assets/01.jpg");
+    min-height: 400px;
+    background: transparent;
+    /*background-image: url("assets/01.jpg");*/
     /*background-repeat: no-repeat;
     background-size: cover;
     background-position:  center 80%;*/
 
-    background-attachment: fixed;
+    /*background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover;*/
 }
 
 .section1 {

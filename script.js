@@ -14,6 +14,7 @@ $(document).ready(function (){
 
     const button = document.querySelector('#up')
     button.style.display = 'none'
+    const jumbotron = document.querySelector('.jumbotron')
 
     $(window).scroll(function () {
         if(window.scrollY > 100) {
