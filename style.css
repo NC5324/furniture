@@ -74,17 +74,16 @@
 }
 
 .jumbotron {
-    background: transparent;
-    /*
     background-image: url("assets/01.jpg");
     /*background-repeat: no-repeat;
     background-size: cover;
     background-position:  center 80%;
+    background: transparent;*/
 
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;*/
+    background-size: cover;
 
     display: flex;
     justify-content: center;
