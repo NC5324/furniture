@@ -1,4 +1,12 @@
 $(document).ready(function (){
+
+    const carouselImages = document.querySelectorAll('.carousel-item-image')
+    const header = document.querySelector('.header').getBoundingClientRect()
+    const height = window.innerHeight - header.bottom - 40 - window.scrollY;
+    for(let i=0; i<carouselImages.length; i++) {
+        carouselImages[i].style.setProperty('height', `${height}px`)
+    }
+
     $('h3').click(function(){
         window.location.href='browse.html'
     })
