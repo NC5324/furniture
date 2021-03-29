@@ -13,6 +13,16 @@
             object-fit: cover;
             object-position: center 80%;
         }
+
+        .carousel {
+            margin-bottom: 40px;
+        }
+
+        @media screen and (max-width: 900px) {
+            .carousel {
+                display: none;
+            }
+        }
     </style>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
@@ -37,14 +47,14 @@
                 <h3>ДЕТСКИ СТАИ</h3>
             </div>
         </div>
-        <div style="margin-bottom: 40px">
-            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel">
+            <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <img src="assets/01.jpg" class="d-block w-100 carousel-item-image" alt="...">
                     </div>
                     <div class="carousel-item">
-                        <img src="assets/02.jpg" class="d-block w-100 carousel-item-image" salt="...">
+                        <img src="assets/02.jpg" class="d-block w-100 carousel-item-image" alt="...">
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -56,6 +66,9 @@
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
+        </div>
+        <div class="jumbotron">
+
         </div>
     </div>
     <div class="section1">

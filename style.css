@@ -74,17 +74,17 @@
 }
 
 .jumbotron {
+    display: none;
     background-image: url("assets/01.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position:  center 80%;
+    flex: 1 0 600px;
 
     /*background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;*/
-    display: flex;
-    justify-content: space-between;
 }
 
 .section1 {
@@ -249,12 +249,19 @@ img:hover{
     }
 
     .jumbotron {
+        display: flex;
+        height: 260px;
+
         background-image: url("assets/jumbotron-small.png");
         background-attachment: scroll;
         background-position: 0 80%;
         flex-basis: 260px;
 
         margin-top: 18px;
+    }
+
+    .carousel {
+        display: none;
     }
 
     .section1 {
@@ -317,6 +324,10 @@ img:hover{
         font-size: 40px;
     }
 
+    .jumbotron {
+        display: flex;
+    }
+
     h2 {
         font-size: 22px;
 
@@ -353,10 +364,11 @@ img:hover{
 
 @media screen and (min-width: 426px) and (max-width: 1024px) {
     .jumbotron {
+        display: flex;
         background-image: url("assets/jumbotron-medium.png");
         background-attachment: scroll;
         background-position: center 80%;
-        flex-basis: 400px;
+        height: 400px;
 
         margin-bottom: 40px;
         margin-top: 18px;
