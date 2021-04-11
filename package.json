@@ -1,0 +1,24 @@
+{
+  "name": "furniture",
+  "version": "1.0.0",
+  "description": "Online catalogue of a furniture store",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "jquery": "^3.6.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NC5324/furniture.git"
+  },
+  "author": "Naiddzhan Durmush",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NC5324/furniture/issues"
+  },
+  "homepage": "https://github.com/NC5324/furniture#readme"
+}
