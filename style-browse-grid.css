@@ -31,8 +31,8 @@ details {
     position: relative;
 }
 details > summary {
-    display: list-item;
-    list-style-type: none;
+    display: list-item!important;
+    list-style-type: none!important;
     position: relative;
 }
 
