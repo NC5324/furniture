@@ -3,7 +3,11 @@ import jwt from 'express-jwt'
 import jsonwebtoken from 'jsonwebtoken'
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
+import hbs from 'hbs'
+import path from 'path'
+
 import furniture from './routes/furniture.js'
+import index from './routes/index.js'
 
 const app = express()
 
@@ -28,7 +32,14 @@ app.use(jwt({
     }
 }))
 
+// View Engine Setup
+app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'hbs')
+
+app.use(express.static(path.join(__dirname)))
+
 app.use('/furniture', furniture)
+app.use(index)
 
 app.listen(3000, () => {
   console.log('App running at http://localhost:3000/')
