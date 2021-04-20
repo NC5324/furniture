@@ -105,8 +105,8 @@ $(document).ready(() => {
             // remove expand icons if no children categories
             const children = categories.filter(x => x.lvl > ctgs[ctg].lvl && x.parentId === ctgs[ctg].id)
             if(children.length === 0) {
-                clone.querySelector(`details[data-id="${ctgs[ctg].id}"] summary`).setAttribute('data-after-closed', '')
-                clone.querySelector(`details[data-id="${ctgs[ctg].id}"] summary`).setAttribute('data-after-open', '')
+                clone.querySelector(`details[data-id="${ctgs[ctg].id}"] summary .test`).setAttribute('data-after-closed', '')
+                clone.querySelector(`details[data-id="${ctgs[ctg].id}"] summary .test`).setAttribute('data-after-open', '')
             }
 
             // select children categories on category selection
@@ -123,7 +123,7 @@ $(document).ready(() => {
             })
 
             const title = document.createTextNode(ctgs[ctg].title);
-            summary.append(checkBox, title)
+            summary.querySelector('.test').append(checkBox, title)
             container.appendChild(clone)
         }
     }

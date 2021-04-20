@@ -31,19 +31,22 @@ details {
     position: relative;
 }
 details > summary {
-    display: list-item!important;
-    list-style-type: none!important;
+    color: white;
     position: relative;
 }
 
-details > summary::after {
+details > summary > span {
+    color: #001F23;
+}
+
+details > summary > span::after {
     content: attr(data-after-closed);
     position: absolute;
     right: 0;
     top: 0;
 }
 
-details[open] > summary::after {
+details[open] > summary > span::after {
     content: attr(data-after-open);
 }
 
