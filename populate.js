@@ -98,6 +98,8 @@ $(document).ready(() => {
             const clone = document.querySelector('#category').content.cloneNode(true)
             clone.querySelector('details').setAttribute('data-id', ctgs[ctg].id + '')
             clone.querySelector('details').style.paddingLeft = level > 0 ? '30px' : ''
+            clone.querySelector('details').style.marginLeft  = level > 0 ? '' : '-20px'
+
 
             const summary = clone.querySelector('summary')
             const checkBox = createCheckBox(ctgs[ctg].id)
