@@ -62,6 +62,11 @@ function createCheckBox(ctgId) {
 
 $(document).ready(() => {
     console.log('Document is fully loaded.')
+
+    if(window.innerWidth > 900) {
+        document.getElementById('ctg-menu').open = true
+    }
+
     let selected = []
     let items = products
 
@@ -121,5 +126,10 @@ $(document).ready(() => {
             summary.append(checkBox, title)
             container.appendChild(clone)
         }
+    }
+
+    const ctgId = Number(localStorage.getItem('category'))
+    if(ctgId) {
+        $('#ctg-'+ctgId).click()
     }
 })

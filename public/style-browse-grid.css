@@ -17,7 +17,7 @@
     margin: 1% 0 40px;
     padding:  60px 10%;
 
-    min-width: 100%; min-height: 100vh;
+    min-width: 100%;
     display: flex;
     position: relative;
 }
@@ -50,15 +50,20 @@ details > summary:focus {
     outline: none
 }
 
-#categories {
+#ctg-menu {
     flex: 0 1 300px;
     margin-right: 30px;
+    margin-top: 20px;
     overflow: hidden;
+}
 
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-    left: 0;
+.ctg-head {
+    height: 40px;
+    border-radius: 11px 11px 0 0;
+    background-color: #001F23; color: white;
+    display: flex;
+    padding: 20px;
+    align-items: center;
 }
 
 .browse {
@@ -66,15 +71,15 @@ details > summary:focus {
     margin: 20px 1% 1%;
 
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-template-rows: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(250px, 1fr));
     grid-gap: 20px;
     align-items: stretch;
 }
 
 .item {
     background-color: white;
-    height: 350px;
+    height: 300px;
     border: 1px solid #ccc;
     box-shadow: 2px 2px 6px 0px  rgba(0,0,0,0.3);
 
@@ -84,7 +89,7 @@ details > summary:focus {
 }
 
 .item-thumb {
-    flex: 0 0 250px;
+    flex: 0 0 200px;
     background-color: lightcoral;
     background-size: cover;
     background-position: center bottom;
@@ -93,8 +98,9 @@ details > summary:focus {
 .item-footer {
     flex: 1 0 auto;
     display: flex;
-    justify-content: center;
+    text-align: center;
     align-items: center;
+    padding: 20px;
 
     transition: background-color 0.9s ease-out;
 }
@@ -112,22 +118,33 @@ details > summary:focus {
 }
 
 @media screen and (max-width: 425px) {
+    .content {
+        flex-flow: column wrap;
+    }
+
     .browse {
         grid-template-columns: 1fr;
     }
 
-    #categories {
-        display: none;
+    #ctg-menu {
+        flex: 0 1 auto;
+        margin-right: 0;
     }
 }
 
 @media screen and (min-width: 426px) and (max-width: 900px) {
+
+    .content {
+        flex-flow: column wrap;
+    }
+
     .browse {
         grid-template-columns: 1fr 1fr;
     }
 
-    #categories {
-        display: none;
+    #ctg-menu {
+        flex: 0 1 auto;
+        margin-right: 0;
     }
 }
 
@@ -136,11 +153,19 @@ details > summary:focus {
         grid-template-columns: 1fr 1fr;
     }
 
-    #categories {
-        display: none;
+    #ctg-menu {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 20px;
+        left: 0;
     }
 }
 
 @media screen and (min-width: 1281px) {
-
+    #ctg-menu {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 20px;
+        left: 0;
+    }
 }

@@ -15,19 +15,6 @@ router.get('/all', (req, res, next) => {
     )
 })
 
-router.get('/:category', (req, res, next) => {
-    Furniture.findAll().then(
-        r => {
-            res.render('browse', {
-                title: req.params.category
-            })
-        },
-        err => {
-            console.log(err)
-        }
-    )
-})
-
 router.get('/page', (req, res, next) => {
     const request = new PageRequest(req.body.perPage, req.body.currentPage)
     Furniture.findAndCountAll({

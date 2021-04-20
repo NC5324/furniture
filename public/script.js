@@ -8,11 +8,11 @@ $(document).ready(function (){
     }
 
     $('h3').click(function(){
-        window.location.href='browse.hbs'
+        window.location.href='browse.html'
     })
 
     $('#logo').click(function (){
-        window.location.href='index.hbs'
+        window.location.href='index.html'
     })
 
     document.getElementById('up').onclick = function() {
