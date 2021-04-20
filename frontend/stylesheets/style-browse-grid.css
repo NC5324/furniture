@@ -1,3 +1,11 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family: 'Open Sans', 'Arial', sans-serif;
+}
+
 .wrapper {
     min-height: 100vh;
     display: flex;
@@ -7,11 +15,59 @@
 .content {
     flex: 1 0 auto;
     margin: 1% 0 40px;
-    padding-right: 10%;
-    padding-left: 10%;
+    padding:  60px 10%;
+
+    min-width: 100%; min-height: 100vh;
+    display: flex;
+    position: relative;
+}
+
+details {
+    font-family: 'Open Sans', 'Arial', sans-serif;
+    font-size: 22px;
+    color: #001F23;
+
+    cursor: pointer;
+    position: relative;
+}
+details > summary {
+    list-style-type: none;
+    position: relative;
+}
+
+details > summary::after {
+    content: attr(data-after-closed);
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+details[open] > summary::after {
+    content: attr(data-after-open);
+}
+
+details > summary:focus {
+    outline: none
+}
+
+#categories {
+    flex: 0 1 300px;
+    margin-right: 30px;
+    overflow: hidden;
+
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    left: 0;
+}
+
+.browse {
+    flex: 1 1 auto;
+    margin: 20px 1% 1%;
 
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(300px, 1fr));
     grid-gap: 20px;
     align-items: stretch;
 }
@@ -29,7 +85,7 @@
 
 .item-thumb {
     flex: 0 0 250px;
-    background-image: url("../../assets/divan1.jpg");
+    background-color: lightcoral;
     background-size: cover;
     background-position: center bottom;
 }
@@ -44,15 +100,11 @@
 }
 
 .item h2 {
-    color: #FF3E57;
-}
-
-.item:hover .item-thumb {
-    transform: scale(1.01);
+    color: #001F23;
 }
 
 .item:hover .item-footer {
-    background: #FF3E57;
+    background: #001F23;
 }
 
 .item:hover h2 {
@@ -60,17 +112,33 @@
 }
 
 @media screen and (max-width: 425px) {
-    .content {
+    .browse {
         grid-template-columns: 1fr;
+    }
+
+    #categories {
+        display: none;
     }
 }
 
 @media screen and (min-width: 426px) and (max-width: 900px) {
+    .browse {
+        grid-template-columns: 1fr 1fr;
+    }
 
+    #categories {
+        display: none;
+    }
 }
 
 @media screen and (min-width: 901px) and (max-width: 1280px) {
+    .browse {
+        grid-template-columns: 1fr 1fr;
+    }
 
+    #categories {
+        display: none;
+    }
 }
 
 @media screen and (min-width: 1281px) {

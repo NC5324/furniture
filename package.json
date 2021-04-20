@@ -1,31 +1,30 @@
 {
-  "name": "furniture",
-  "version": "1.0.0",
-  "description": "Online catalogue of a furniture store",
-  "main": "index.js",
-  "type": "module",
+  "name": "mebeli2",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./app.js --exec babel-node -e js",
+    "debug": "set DEBUG=express:* & nodemon ./app.js --exec babel-node -e js"
+  },
   "dependencies": {
-    "express": "^4.17.1",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "express-jwt": "^6.0.0",
+    "hbs": "~4.0.4",
+    "http-errors": "~1.6.3",
     "jquery": "^3.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "~1.9.1",
     "nodemon": "^2.0.7",
+    "pg": "^8.6.0",
+    "pg-hstore": "^2.3.3",
     "sequelize": "^6.6.2"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-0": "^6.24.1"
-  },
-  "scripts": {
-    "start": "nodemon ./index.js --exec babel-node -e js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/NC5324/furniture.git"
-  },
-  "author": "Naiddzhan Durmush",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/NC5324/furniture/issues"
-  },
-  "homepage": "https://github.com/NC5324/furniture#readme"
+  }
 }
