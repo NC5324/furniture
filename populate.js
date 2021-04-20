@@ -78,7 +78,7 @@ $(document).ready(() => {
         for(let i=0; i<items.length; i++) {
             const clone = template.content.cloneNode(true)
             clone.querySelector('.item-footer h2').textContent = items[i].name
-            clone.querySelector('.item-thumb').style.setProperty('background-image', `url("../${items[i].thumbnail}")`)
+            clone.querySelector('.item-thumb').style.setProperty('background-image', `url("./${items[i].thumbnail}")`)
             document.querySelector('.browse').appendChild(clone);
         }
     })

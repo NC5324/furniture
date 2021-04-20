@@ -31,7 +31,7 @@
 </template>
 <div class="container">
     <div class="wrapper">
-        <div class="header">
+        <header class="header">
             <img id="logo" src="assets/sik.png" alt="Kocamanlar Logo" width="223" height="82">
             <div class="nav">
                 <h3 onclick="localStorage.setItem('category', '7')">СПАЛНЯ</h3>
@@ -41,8 +41,8 @@
                 <h3 onclick="localStorage.setItem('category', '69')">СЕКЦИИ</h3>
                 <h3 onclick="localStorage.setItem('category', '34')">ДЕТСКИ СТАИ</h3>
             </div>
-        </div>
-        <div class="content">
+        </header>
+        <main class="content">
             <details id="ctg-menu">
                 <summary>
                     <div class="ctg-head">
@@ -54,9 +54,9 @@
             </details>
             <div class="browse">
             </div>
-        </div>
+        </main>
     </div>
-    <div class="footer">
+    <footer class="footer">
         <div class="footer-section">
             <h2>ВСИЧКИ КАТЕГОРИИ</h2>
             <div class="subsection-wrapper">
@@ -87,7 +87,7 @@
                 <img id="insta" src="assets/social-insta.png" width="35px" height="40px" alt="instagram" style="margin: 5px">
             </div>
         </div>
-    </div>
+    </footer>
     <div id="up">
         <img src="assets/top2.svg" alt="back to top" width="50px" height="50px">
     </div>
