@@ -127,6 +127,14 @@
             #section2 {
                 flex-grow: 0;
             }
+
+            #reviews-details {
+                flex-direction: column;
+            }
+
+            .review {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -167,7 +175,7 @@
             </div>
             <div class="btn-cart" style="border: 1px solid #001F23; margin-top: 10px">
                 <i class="fas fa-cart-plus" style="margin: auto; font-size: 40px;"></i>
-                <h2 style="color: #001F23; margin: auto;">Добави в количката</h2>
+                <h2 style="color: #001F23; margin: auto; text-align: center">Добави в количката</h2>
             </div>
         </div>
     </section>
@@ -180,14 +188,14 @@
         <a href="#reviews">Reviews</a>
     </div>
 </div>
-<div id="reviews" style="height: 1200px; width: 100%; padding: 40px 10%; display: flex; flex-direction: column;">
+<div id="reviews" style="width: 100%; padding: 40px 10%; display: flex; flex-direction: column;">
     <div id="reviews-header" style="background-color: white; border-bottom: 1px solid #D8D8D8">
         <h1 style="padding-bottom: 15px;">Reviews</h1>
     </div>
     <div id="reviews-details" style="background-color: white; display: flex; border-bottom: 1px solid #D8D8D8">
         <div id="reviews-details-rating" style="flex: 0 1 auto; display: flex; flex-direction: column; padding: 30px 50px; margin: 20px 0; border-right: 1px solid #D8D8D8">
             <span style="font-size: 100px; font-weight: 500; margin: auto">5.0</span>
-            <div id="reviews-details-rating-stars">
+            <div id="reviews-details-rating-stars" style="margin: auto">
                 <i style="font-size: 30px; color: #FF9100" class="fas fa-star"></i>
                 <i style="font-size: 30px; color: #FF9100" class="fas fa-star"></i>
                 <i style="font-size: 30px; color: #FF9100" class="fas fa-star"></i>
