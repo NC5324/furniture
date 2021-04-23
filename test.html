@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Page</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+
+            font-family: "Roboto", "Open Sans", "Arial", sans-serif;
+            font-weight: 500;
+            color: #001F23;
+        }
+        h1 {
+            font-size: 30px;
+        }
+        h2 {
+            font-size: 22px;
+        }
+        p {
+            font-size: 26px;
+            font-weight: 400;
+            word-wrap: anywhere;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        #wrapper {
+            min-width: 100%;
+            --myPadding: 10%;
+            padding: calc(var(--myPadding)/2) var(--myPadding) 40px;
+
+            display: flex;
+            flex-flow: row nowrap;
+        }
+
+        #section1 {
+            flex: 58%;
+            display: flex;
+            flex-flow: column nowrap;
+            margin-right: 30px;
+            height: 100%;
+
+        }
+
+        #section2 {
+            flex: 42%;
+            display: flex;
+            flex-flow: column nowrap;
+            height: 100%;
+        }
+
+        #product-rating i {
+            color: #FF9100;
+            font-size: 30px;
+            margin-right: 10px;
+        }
+
+        .btn-fast {
+            width: 220px; height: 55px; display: flex; margin: auto 10px auto 0;
+            border-radius: 23px;
+
+            cursor: pointer;
+        }
+
+        .btn-fast * {
+            color: white;
+            font-size: 22px;
+            margin: auto;
+            text-decoration: none;
+        }
+
+        .btn-fast:hover {
+            background-color: #FF546A;
+        }
+
+        div.btn-cart, div.btn-fav, div.btn-review {
+            max-width: 320px;
+            height: 60px; border-radius: 23px; display: flex;
+            cursor: pointer;
+            padding: 0 15px;
+        }
+
+        div.btn-fav:hover {
+            background-color: white!important;
+            border: 1px solid #FF3E57!important;
+        }
+        div.btn-fav:hover * {
+            color: #FF3E57!important;
+        }
+
+        div.btn-cart:hover {
+            background-color: #001F23;
+        }
+        div.btn-cart:hover * {
+            color: white!important;
+        }
+
+        div.btn-review:hover {
+            background-color: white!important;
+            border: 1px solid #FF9100!important;
+        }
+        div.btn-review:hover * {
+            color: #FF9100!important;
+        }
+
+        @media screen and (max-width: 768px) {
+            #wrapper {
+                min-height: 100vh;
+                flex-flow: column nowrap;
+                justify-content: space-evenly;
+            }
+
+            #section1 {
+                flex-grow: 0;
+                margin-right: 0;
+            }
+
+            #section2 {
+                flex-grow: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="wrapper">
+    <section id="section1">
+        <div style="height: 550px; background-color: #D8D8D8">
+
+        </div>
+        <div style="height: 150px; background-color: #D8D8D8; margin-top: 20px;">
+
+        </div>
+    </section>
+    <section id="section2">
+        <div id="product-header" style="display: flex; flex-flow: column nowrap;">
+            <h1>Product Title</h1>
+            <h2 style="margin-top: 10px">Category/ies</h2>
+            <div id="product-rating" style="margin-top: 30px;">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+        </div>
+        <div id="product-desc" style="margin-top: 40px">
+            <p style="height: 120px;">
+                Bacon ipsum dolor amet pastrami drumstick bacon beef cow cupim tri-tip short loin prosciutto porchetta brisket. Meatloaf sausage ham hock leberkas drumstick shankle brisket rump sirloin, turducken cow.
+            </p>
+        </div>
+        <div id="product-price" style="font-size: 50px; color: #FF3E57; margin-top: 40px;">
+            2200 лв.
+        </div>
+        <div id="product-buttons" style="margin-top: 30px">
+            <div class="btn-fav" style="background-color: #FF3E57;">
+                <i class="fas fa-heart" style="margin: auto; font-size: 40px; color: white"></i>
+                <h2 style="color: white; margin: auto;">Добави в любими</h2>
+            </div>
+            <div class="btn-cart" style="border: 1px solid #001F23; margin-top: 10px">
+                <i class="fas fa-cart-plus" style="margin: auto; font-size: 40px;"></i>
+                <h2 style="color: #001F23; margin: auto;">Добави в количката</h2>
+            </div>
+        </div>
+    </section>
+</div>
+<div style="position: sticky; top: 0; width: 100%; height: 80px; background-color: #FF3E57; display: none; padding: 0 10%;">
+    <div class="btn-fast">
+        <a href="#">Overview</a>
+    </div>
+    <div class="btn-fast">
+        <a href="#reviews">Reviews</a>
+    </div>
+</div>
+<div id="reviews" style="height: 1200px; width: 100%; padding: 40px 10%; display: flex; flex-direction: column;">
+    <div id="reviews-header" style="background-color: white; border-bottom: 1px solid #D8D8D8">
+        <h1 style="padding-bottom: 15px;">Reviews</h1>
+    </div>
+    <div id="reviews-details" style="background-color: white; display: flex; border-bottom: 1px solid #D8D8D8">
+        <div id="reviews-details-rating" style="flex: 0 1 auto; display: flex; flex-direction: column; padding: 30px 50px; margin: 20px 0; border-right: 1px solid #D8D8D8">
+            <span style="font-size: 100px; font-weight: 500; margin: auto">5.0</span>
+            <div id="reviews-details-rating-stars">
+                <i style="font-size: 30px; color: #FF9100" class="fas fa-star"></i>
+                <i style="font-size: 30px; color: #FF9100" class="fas fa-star"></i>
+                <i style="font-size: 30px; color: #FF9100" class="fas fa-star"></i>
+                <i style="font-size: 30px; color: #FF9100" class="fas fa-star"></i>
+                <i style="font-size: 30px; color: #FF9100" class="fas fa-star"></i>
+            </div>
+            <h2 style="margin: 10px auto; text-decoration: underline">(30 reviews)</h2>
+        </div>
+        <div id="reviews-details-distribution" style="
+                margin: 20px 0;
+                padding: 30px 50px;
+                border-right: 1px solid #D8D8D8;
+                flex: 1 1 auto;
+                display: flex;
+            ">
+            <div style="flex: 0 0 auto; display: grid; grid-template-rows: repeat(5, 30px); grid-row-gap: 10px; margin-right: 10px;">
+                <h2 style="grid-row: 1">(5 звезди)</h2>
+                <h2 style="grid-row: 2">(4 звезди)</h2>
+                <h2 style="grid-row: 3">(3 звезди)</h2>
+                <h2 style="grid-row: 4">(2 звезди)</h2>
+                <h2 style="grid-row: 5">(1 звезда)</h2>
+            </div>
+
+            <div style="flex: 1 1 600px; display: grid; grid-template-rows: repeat(5, 30px); grid-row-gap: 10px; margin-right: 10px;">
+                <div style="background-color: #D8D8D8; border-radius: 23px;"></div>
+                <div style="background-color: #D8D8D8; border-radius: 23px;"></div>
+                <div style="background-color: #D8D8D8; border-radius: 23px;"></div>
+                <div style="background-color: #D8D8D8; border-radius: 23px;"></div>
+                <div style="background-color: #D8D8D8; border-radius: 23px;"></div>
+            </div>
+
+            <div style="flex: 0 0 auto; display: grid; grid-template-rows: repeat(5, 30px); grid-row-gap: 10px;">
+                <h2 style="grid-row: 1; text-align: right">(30)</h2>
+                <h2 style="grid-row: 2; text-align: right">(0)</h2>
+                <h2 style="grid-row: 3; text-align: right">(0)</h2>
+                <h2 style="grid-row: 4; text-align: right">(0)</h2>
+                <h2 style="grid-row: 5; text-align: right">(0)</h2>
+            </div>
+        </div>
+        <div id="reviews-details-add" style="flex: 0 1 auto; display: flex; flex-direction: column; padding: 30px 50px; margin: auto;">
+            <h1 style="margin: auto">Какво мислиш за покупката си?</h1>
+            <div class="btn-review" style="background-color: #FF9100; margin: 10px auto auto">
+                <i class="fas fa-star" style="margin: auto; color: white; font-size: 40px;"></i>
+                <h2 style="color: white; margin: auto; padding: 0 15px;">Добави ревю</h2>
+            </div>
+        </div>
+    </div>
+    <div id="reviews-filters" style="background-color: white; height: 85px; border-bottom: 1px solid #D8D8D8">
+    </div>
+    <div class="review" style="background-color: white; display: flex; border-bottom: 1px solid #D8D8D8;">
+        <div class="review-author" style="flex: 0 0 240px; display: flex; flex-direction: column; padding: 20px 10px 30px 0;">
+            <div style="height: 100px; width: 100px; background-color: #D8D8D8; border-radius: 50%"></div>
+            <span style="font-size: 26px; margin-top: 10px;">Наидджан Дурмуш</span> <!-- name -->
+            <span style="font-size: 22px; color: #007A75">23 Мар 2021</span> <!-- date -->
+        </div>
+        <div class="review-main" style="
+                padding: 20px 10px 30px;
+                flex: 1 1 auto;
+                display: flex;
+                flex-direction: column;
+            ">
+            <div class="review-main-header" style="height: 100px; display: flex; flex-direction: column;">
+                <h1>За нищо не става</h1>
+                <div class="reviews-stars" style="margin-top: 10px">
+                    <i style="font-size: 30px; color: #FF9100" class="fas fa-star"></i>
+                    <i style="font-size: 30px; color: #D8D8D8" class="fas fa-star"></i>
+                    <i style="font-size: 30px; color: #D8D8D8" class="fas fa-star"></i>
+                    <i style="font-size: 30px; color: #D8D8D8" class="fas fa-star"></i>
+                    <i style="font-size: 30px; color: #D8D8D8" class="fas fa-star"></i>
+                </div>
+            </div>
+            <p class="review-text" style="flex: 0 1 auto; margin-top: 10px;">
+                Дивана за нищо не става, счупи се на втория ден! Какви боклуци продавате не е истина!
+            </p>
+            <div class="review-footer" style="display: flex; margin-top: 10px;">
+                <i style="font-size: 30px; color: #007A75;" class="far fa-thumbs-up"></i>
+                <span style="padding: 0 15px; font-size: 26px; font-weight: 500; border-right: 1px solid #D8D8D8">0</span>
+                <i style="padding: 0 15px; font-size: 30px; color: #007A75;" class="far fa-comment-dots"></i>
+                <span style="font-size: 26px; font-weight: 500; cursor: pointer">Добави коментар</span>
+            </div>
+        </div>
+    </div>
+    <div class="review" style="background-color: white; display: flex; border-bottom: 1px solid #D8D8D8;">
+        <div class="review-author" style="flex: 0 0 240px; display: flex; flex-direction: column; padding: 20px 10px 30px 0;">
+            <div style="height: 100px; width: 100px; background-color: #D8D8D8; border-radius: 50%"></div>
+            <span style="font-size: 26px; margin-top: 10px;">Kacper Frackowiak</span> <!-- name -->
+            <span style="font-size: 22px; color: #007A75">19 Мар 2021</span> <!-- date -->
+        </div>
+        <div class="review-main" style="
+                padding: 20px 10px 30px;
+                flex: 1 1 auto;
+                display: flex;
+                flex-direction: column;
+            ">
+            <div class="review-main-header" style="height: 100px; display: flex; flex-direction: column;">
+                <h1>Very pog review title</h1>
+                <div class="reviews-stars" style="margin-top: 10px">
+                    <i style="font-size: 30px; color: #FF9100" class="fas fa-star"></i>
+                    <i style="font-size: 30px; color: #FF9100" class="fas fa-star"></i>
+                    <i style="font-size: 30px; color: #FF9100" class="fas fa-star"></i>
+                    <i style="font-size: 30px; color: #FF9100" class="fas fa-star"></i>
+                    <i style="font-size: 30px; color: #FF9100" class="fas fa-star"></i>
+                </div>
+            </div>
+            <p class="review-text" style="flex: 0 1 auto; margin-top: 10px;">
+                Poggers product, recommend to everyone! Bacon ipsum dolor amet pastrami drumstick bacon beef cow cupim tri-tip short loin prosciutto porchetta brisket. Meatloaf sausage ham hock leberkas drumstick shankle brisket rump sirloin, turducken cow.
+            </p>
+            <div class="review-footer" style="display: flex; margin-top: 10px;">
+                <i style="font-size: 30px; color: #007A75;" class="far fa-thumbs-up"></i>
+                <span style="padding: 0 15px; font-size: 26px; font-weight: 500; border-right: 1px solid #D8D8D8">0</span>
+                <i style="padding: 0 15px; font-size: 30px; color: #007A75;" class="far fa-comment-dots"></i>
+                <span style="font-size: 26px; font-weight: 500; cursor: pointer">Добави коментар</span>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

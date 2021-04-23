@@ -1,11 +1,24 @@
 import express from 'express'
-import { Furniture } from '../models'
+import { Furniture, Category } from '../models'
 import PageRequest from '../requests/page_request.js'
 
 const router = express.Router()
 
 router.get('/all', (req, res, next) => {
     Furniture.findAll().then(
+        r => {
+            res.status(200).json(r)
+        },
+        err => {
+            console.log(err)
+        }
+    )
+})
+
+router.get('/test', (req, res, next) => {
+    Furniture.findAll({
+        include: Category
+    }).then(
         r => {
             res.status(200).json(r)
         },

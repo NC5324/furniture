@@ -23,7 +23,6 @@ app.use(jwt({
     secret: jwtSecret,
     algorithms: ['HS256'],
     getToken: req => {
-        console.log(req.headers)
         return req.cookies.token
     }
 }))

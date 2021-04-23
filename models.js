@@ -32,12 +32,47 @@ const Category = db.define('category', {
         type: DataTypes.STRING,
         allowNull: true
     }
-},{
+}, {
     tableName: 'category',
     timestamps: false
 })
 
+const CategoryFurniture = db.define('CategoryFurniture', {
+    categoryId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true,
+        references: {
+            model: Category,
+            key: 'id'
+        },
+        field: 'category_id'
+    },
+    furnitureId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true,
+        references: {
+            model: Furniture,
+            key: 'id'
+        },
+        field: 'furniture_id'
+    }
+}, {
+    tableName: 'category_furniture',
+    timestamps: false
+})
+
+Furniture.belongsToMany(Category, {
+    through: CategoryFurniture
+})
+Category.belongsToMany(Furniture, {
+    through: CategoryFurniture
+})
+
 Furniture.sync()
 Category.sync()
+CategoryFurniture.sync()
+
 
 export { Furniture, Category }
