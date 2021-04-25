@@ -97,7 +97,22 @@ $(document).ready(() => {
     }
 
     for(let i=0; i<reviews.length; i++) {
+        const data = reviews[i]
+        console.log(data)
+        const template = document.getElementById('template-review').content.cloneNode(true)
 
+        template.querySelector('.author-name').textContent = data.author
+        template.querySelector('.posted-on').textContent = data.date
+        template.querySelector('.review-title').textContent = data.title
+        for(let j = 0; j<5; j++) {
+            const star = document.querySelector('#template-star').content.cloneNode(true)
+            if (j >= data.rating) {
+                star.querySelector('i').style.color = '#D8D8D8'
+            }
+            template.querySelector('.review-stars').appendChild(star)
+        }
+        template.querySelector('.review-text').textContent = data.description
+        reviewSection.appendChild(template)
     }
 
     $(window).on('resize', () => {

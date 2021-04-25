@@ -48,3 +48,18 @@
 .btn-review:hover * {
     color: #FF9100!important;
 }
+
+.author-avatar {
+    height: 100px;
+    width: 100px;
+    background-color: #D8D8D8;
+    border-radius: 50%;
+}
+
+.review > div {
+    padding: 20px 10px 30px 0;
+}
+
+.clickable {
+    cursor: pointer;
+}
