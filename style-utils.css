@@ -1,0 +1,82 @@
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.txt-lg {
+    font-size: 30px;
+}
+
+.txt-md {
+    font-size: 26px;
+}
+
+.txt-sm {
+    font-size: 22px;
+}
+
+.mt-5 {
+    margin-top: 5px;
+}
+
+.mt-10 {
+    margin-top: 10px;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mr-5 {
+    margin-right: 5px;
+}
+
+.mr-10 {
+    margin-right: 10px;
+}
+
+.pd-r-15 {
+    padding-right: 15px;
+}
+
+.pd-l-15 {
+    padding-left: 15px;
+}
+
+.pd-b-15 {
+    padding-bottom: 15px;
+}
+
+.pd-rl-15 {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.font-primary {
+    font-family: "Roboto", "Open Sans", "Arial", sans-serif;
+    font-weight: 500;
+    color: #001F23;
+}
+
+.font-secondary {
+    font-family: "Roboto", "Open Sans", "Arial", sans-serif;
+    font-weight: 400;
+    color: #001F23;
+}
+
+.divide-b {
+    border-bottom: 1px solid #D8D8D8;
+}
+
+.divide-r {
+    border-right: 1px solid #D8D8D8;
+}
+
+.m-auto {
+    margin: auto;
+}

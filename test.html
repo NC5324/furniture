@@ -7,6 +7,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <link rel="stylesheet" href="style-utils.css">
     <style>
         * {
             margin: 0;
@@ -48,7 +50,6 @@
             flex-flow: column nowrap;
             margin-right: 30px;
             height: 100%;
-
         }
 
         #section2 {
@@ -82,13 +83,6 @@
             background-color: #FF546A;
         }
 
-        div.btn-cart, div.btn-fav, div.btn-review {
-            max-width: 320px;
-            height: 60px; border-radius: 23px; display: flex;
-            cursor: pointer;
-            padding: 0 15px;
-        }
-
         div.btn-fav:hover {
             background-color: white!important;
             border: 1px solid #FF3E57!important;
@@ -102,14 +96,6 @@
         }
         div.btn-cart:hover * {
             color: white!important;
-        }
-
-        div.btn-review:hover {
-            background-color: white!important;
-            border: 1px solid #FF9100!important;
-        }
-        div.btn-review:hover * {
-            color: #FF9100!important;
         }
 
         @media screen and (max-width: 768px) {
@@ -132,11 +118,19 @@
                 flex-direction: column;
             }
 
+            #reviews-details .reviews-subsection {
+                border-right: none;
+                border-bottom: 1px solid #D8D8D8;
+            }
+
             .review {
                 flex-direction: column;
             }
         }
     </style>
+    <link rel="stylesheet" href="style-product-page.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="product-page-script.js"></script>
 </head>
 <body>
 <div id="wrapper">
@@ -188,11 +182,11 @@
         <a href="#reviews">Reviews</a>
     </div>
 </div>
-<div id="reviews" style="width: 100%; padding: 40px 10%; display: flex; flex-direction: column;">
-    <div id="reviews-header" style="background-color: white; border-bottom: 1px solid #D8D8D8">
-        <h1 style="padding-bottom: 15px;">Reviews</h1>
+<!-- <div id="reviews" style="width: 100%; padding: 40px 10%; display: flex; flex-direction: column;">
+    <div id="reviews-header" style="">
+        <h1 style="padding-bottom: 15px; border-bottom: 1px solid #D8D8D8">Reviews</h1>
     </div>
-    <div id="reviews-details" style="background-color: white; display: flex; border-bottom: 1px solid #D8D8D8">
+    <div id="reviews-details" style="display: flex; border-bottom: 1px solid #D8D8D8">
         <div id="reviews-details-rating" style="flex: 0 1 auto; display: flex; flex-direction: column; padding: 30px 50px; margin: 20px 0; border-right: 1px solid #D8D8D8">
             <span style="font-size: 100px; font-weight: 500; margin: auto">5.0</span>
             <div id="reviews-details-rating-stars" style="margin: auto">
@@ -242,14 +236,14 @@
                 <h2 style="color: white; margin: auto; padding: 0 15px;">Добави ревю</h2>
             </div>
         </div>
-    </div>
-    <div id="reviews-filters" style="background-color: white; height: 85px; border-bottom: 1px solid #D8D8D8">
-    </div>
-    <div class="review" style="background-color: white; display: flex; border-bottom: 1px solid #D8D8D8;">
+    </div> -->
+<div id="reviews-filters" style="height: 85px; border-bottom: 1px solid #D8D8D8">
+</div>
+<div class="review" style="display: flex; border-bottom: 1px solid #D8D8D8;">
         <div class="review-author" style="flex: 0 0 240px; display: flex; flex-direction: column; padding: 20px 10px 30px 0;">
             <div style="height: 100px; width: 100px; background-color: #D8D8D8; border-radius: 50%"></div>
-            <span style="font-size: 26px; margin-top: 10px;">Наидджан Дурмуш</span> <!-- name -->
-            <span style="font-size: 22px; color: #007A75">23 Мар 2021</span> <!-- date -->
+            <span style="font-size: 26px; margin-top: 10px;">Наидджан Дурмуш</span>
+            <span style="font-size: 22px; color: #007A75">23 Мар 2021</span>
         </div>
         <div class="review-main" style="
                 padding: 20px 10px 30px;
@@ -277,40 +271,46 @@
                 <span style="font-size: 26px; font-weight: 500; cursor: pointer">Добави коментар</span>
             </div>
         </div>
-    </div>
-    <div class="review" style="background-color: white; display: flex; border-bottom: 1px solid #D8D8D8;">
-        <div class="review-author" style="flex: 0 0 240px; display: flex; flex-direction: column; padding: 20px 10px 30px 0;">
-            <div style="height: 100px; width: 100px; background-color: #D8D8D8; border-radius: 50%"></div>
-            <span style="font-size: 26px; margin-top: 10px;">Kacper Frackowiak</span> <!-- name -->
-            <span style="font-size: 22px; color: #007A75">19 Мар 2021</span> <!-- date -->
-        </div>
-        <div class="review-main" style="
-                padding: 20px 10px 30px;
-                flex: 1 1 auto;
-                display: flex;
-                flex-direction: column;
-            ">
-            <div class="review-main-header" style="height: 100px; display: flex; flex-direction: column;">
-                <h1>Very pog review title</h1>
-                <div class="reviews-stars" style="margin-top: 10px">
-                    <i style="font-size: 30px; color: #FF9100" class="fas fa-star"></i>
-                    <i style="font-size: 30px; color: #FF9100" class="fas fa-star"></i>
-                    <i style="font-size: 30px; color: #FF9100" class="fas fa-star"></i>
-                    <i style="font-size: 30px; color: #FF9100" class="fas fa-star"></i>
-                    <i style="font-size: 30px; color: #FF9100" class="fas fa-star"></i>
-                </div>
-            </div>
-            <p class="review-text" style="flex: 0 1 auto; margin-top: 10px;">
-                Poggers product, recommend to everyone! Bacon ipsum dolor amet pastrami drumstick bacon beef cow cupim tri-tip short loin prosciutto porchetta brisket. Meatloaf sausage ham hock leberkas drumstick shankle brisket rump sirloin, turducken cow.
-            </p>
-            <div class="review-footer" style="display: flex; margin-top: 10px;">
-                <i style="font-size: 30px; color: #007A75;" class="far fa-thumbs-up"></i>
-                <span style="padding: 0 15px; font-size: 26px; font-weight: 500; border-right: 1px solid #D8D8D8">0</span>
-                <i style="padding: 0 15px; font-size: 30px; color: #007A75;" class="far fa-comment-dots"></i>
-                <span style="font-size: 26px; font-weight: 500; cursor: pointer">Добави коментар</span>
-            </div>
-        </div>
-    </div>
 </div>
+<template id="template-reviews-section">
+    <div class="reviews-section flex-col">
+        <h1 class="pd-b-15 divide-b font-primary txt-lg">Reviews</h1>
+    </div>
+</template>
+<template id="template-reviews-details">
+    <div id="reviews-details" class="flex-row divide-b">
+        <div id="rating-avg" class="reviews-subsection flex-col divide-r" style="flex: 0 1 auto">
+            <span class="rating-avg font-primary m-auto">0.0</span> <!-- average rating -->
+            <div id="avg-stars-wrapper" class="flex-row m-auto"></div> <!-- TODO: append template-stars clones to this -->
+            <h2 class="m-auto mt-10" style="text-decoration: underline">(XX reviews)</h2> <!-- total number of reviews -->
+        </div>
+        <div id="rating-distribution" class="reviews-subsection flex-row divide-r" style="flex: 1 1 600px">
+            <div id="rating-types" class="rating-distribution-subsection" style="flex: 0 0 auto"></div>
+            <div id="rating-main" class="rating-distribution-subsection" style="flex: 1 1 600px"></div>
+            <div id="rating-count" class="rating-distribution-subsection" style="flex: 0 0 auto"></div>
+        </div>
+        <div id="rating-prompt" class="reviews-subsection flex-col m-auto" style="flex: 0 1 400px">
+            <h1 class="txt-lg m-auto" style="text-align: center">Какво мислиш за покупката си?</h1>
+            <div class="btn-review m-auto mt-10">
+                <i class="fas fa-star m-auto" style="color: white"></i>
+                <h2 class="txt-sm m-auto">Добави ревю</h2>
+            </div>
+        </div>
+    </div>
+</template>
+<template id="template-star">
+    <i class="fas fa-star txt-lg m-auto" style="color: #FF9100"></i>
+</template>
+<template id="template-distribution-type">
+    <h2 class="txt-sm" style="">(X звезди)</h2>
+</template> <!-- get reviews stats and append from this to distribution-rating-types -->
+<template id="template-distribution-main">
+    <div class="outer" style="background-color: #D8D8D8; border-radius: 23px;">
+        <div class="inner" style="background-color: #FF9100; border-radius: 23px; height: 100%"></div>
+    </div>
+</template> <!-- get reviews stats and append from this to distribution-rating-main -->
+<template id="template-distribution-count">
+    <h2 class="txt-sm" style="text-align: right">(0)</h2>
+</template> <!-- get reviews stats and append from this to distribution-rating-count -->
 </body>
 </html>
