@@ -8,7 +8,11 @@ $(document).ready(function (){
     }
 
     $('h3').click(function(){
-        window.location.href='./public/browse.html'
+        if(window.location.pathname.includes('index.html')) {
+            window.location.href = './public/browse.html'
+        } else {
+            window.location.href = './browse.html'
+        }
     })
 
     $('#logo').click(function (){
