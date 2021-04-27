@@ -2,86 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мебели "КОДЖАМАНЛАР"</title>
-    <link rel="icon" href="assets/kocamanlar-icon1.png">
-
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="style-utils.css">
-    <link rel="stylesheet" href="style-product-page.css">
-
-    <!-- FA Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-          integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-          crossorigin="anonymous" />
-
-    <!-- Fonts -->
+    <title>Product Page</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-    <!-- Scripts -->
+    <link rel="stylesheet" href="stylesheets/style-utils.css">
+    <link rel="stylesheet" href="stylesheets/style-product-page.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="script.js"></script>
-    <script src="product-page-script.js"></script>
+    <script src="scripts/product-page-script.js"></script>
 </head>
 <body>
-<div class="container">
-    <div class="wrapper">
-        <header class="header">
-            <img id="logo" src="assets/sik.png" alt="Kocamanlar Logo" width="223" height="82">
-            <div class="nav">
-                <h3 onclick="localStorage.setItem('category', '7')">СПАЛНЯ</h3>
-                <h3 onclick="localStorage.setItem('category', '1')">ХОЛНА ГАРНИТУРА</h3>
-                <h3 onclick="localStorage.setItem('category', '8')">ТРАПЕЗАРИИ</h3>
-                <h3 onclick="localStorage.setItem('category', '2')">ДИВАНИ</h3>
-                <h3 onclick="localStorage.setItem('category', '69')">СЕКЦИИ</h3>
-                <h3 onclick="localStorage.setItem('category', '34')">ДЕТСКИ СТАИ</h3>
-            </div>
-        </header>
-        <main class="content">
-            <section id="section1" class="flex-col"></section>
-            <section id="section2" class="flex-col"></section>
-        </main>
-        <section class="reviews-section flex-col">
-            <h1 class="pd-b-15 divide-b font-primary txt-lg fg-primary">Reviews</h1>
-        </section>
-    </div>
-    <footer class="footer">
-        <div class="footer-section">
-            <h2>ВСИЧКИ КАТЕГОРИИ</h2>
-            <div class="subsection-wrapper">
-                <div class="subsection">
-                    <a href="#">Спални комплекти</a>
-                    <a href="#">Холна гарнитура</a>
-                    <a href="#">Холни маси</a>
-                    <a href="#">Кухненски маси</a>
-                    <a href="#">Ъглови дивани</a>
-                </div>
-                <div class="subsection">
-                    <a href="#">Разтегателни дивани</a>
-                    <a href="#">Дивани</a>
-                    <a href="#">Гардероби</a>
-                    <a href="#">Детски стаи</a>
-                    <a href="#">Фотьойли</a>
-                    <a href="#">Шкафове</a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-section">
-            <h2>КОНТАКТИ</h2>
-            <a href="#">Е-поща: kocamanlar@abv.bg</a>
-            <a href="#">Tel: +359 XX XXXX XXX</a>
-            <a href="#">Форма за контакт</a>
-            <div id="social" style="display: flex; flex-flow: row nowrap; margin-top: auto">
-                <img id="fb" src="assets/social-fb.png" width="35px" height="40px" alt="facebook" style="margin: 5px">
-                <img id="insta" src="assets/social-insta.png" width="35px" height="40px" alt="instagram" style="margin: 5px">
-            </div>
-        </div>
-    </footer>
-    <div id="up">
-        <img src="assets/top2.svg" alt="back to top" width="50px" height="50px">
-    </div>
+<div id="content">
+    <section id="section1" class="flex-col"></section>
+    <section id="section2" class="flex-col"></section>
 </div>
 <template id="template-product-pics">
     <div class="pic-main bg-placeholder" style="height: 550px;">
@@ -147,6 +82,11 @@
                 <span class="txt-md font-primary clickable fg-primary">Добави коментар</span>
             </div>
         </div>
+    </div>
+</template>
+<template id="template-reviews-section">
+    <div class="reviews-section flex-col">
+        <h1 class="pd-b-15 divide-b font-primary txt-lg fg-primary">Reviews</h1>
     </div>
 </template>
 <template id="template-reviews-details">

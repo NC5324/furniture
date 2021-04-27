@@ -71,7 +71,7 @@
 
 .jumbotron {
     display: none;
-    background-image: url("assets/01.jpg");
+    background-image: url("../../assets/01.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position:  center 80%;
@@ -93,7 +93,7 @@
 }
 
 .section2 {
-    background: url("assets/vectorpaint.svg") right top no-repeat;
+    background: url("../../assets/vectorpaint.svg") right top no-repeat;
     background-size: 30% 87.5%;
     color: #FF3E57;
     margin-bottom: 40px;
@@ -113,7 +113,7 @@
 .section1 .section-img {
     flex: 1 0 55%;
 
-    background-image: url("assets/section1.png");
+    background-image: url("../../assets/section1.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 100% 0;
@@ -132,7 +132,7 @@
     margin: 0 10%;
     flex: 2.5 0 auto;
 
-    background-image: url("assets/02.jpg");
+    background-image: url("../../assets/02.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position:  center 80%;
@@ -248,7 +248,7 @@ img:hover{
         display: flex;
         height: 260px;
 
-        background-image: url("assets/jumbotron-small.png");
+        background-image: url("../../assets/jumbotron-small.png");
         background-attachment: scroll;
         background-position: 0 80%;
         flex-basis: 260px;
@@ -368,7 +368,7 @@ img:hover{
     }
     .jumbotron {
         display: flex;
-        background-image: url("assets/jumbotron-medium.png");
+        background-image: url("../../assets/jumbotron-medium.png");
         background-attachment: scroll;
         background-position: center 80%;
         height: 400px;
