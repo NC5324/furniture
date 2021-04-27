@@ -59,16 +59,40 @@ $(document).ready(() => {
         ]
     }
 
-    let reviewSection = document.getElementById('template-reviews-section').content.cloneNode(true)
-    document.body.appendChild(reviewSection)
-    reviewSection = document.querySelector('.reviews-section')
+    let section1 = document.getElementById('section1')
+    const pics = document.getElementById('template-product-pics').content.cloneNode(true)
+    section1.appendChild(pics)
 
+    let section2 = document.getElementById('section2')
+    section2.style.height = Math.round(document.querySelector('.pic-main').getBoundingClientRect().height) + 'px'
+    const pHeader = document.getElementById('template-product-header').content.cloneNode(true)
+    section2.appendChild(pHeader)
+    for(let i = 0; i<5; i++) {
+        const star = document.getElementById('template-star').content.cloneNode(true)
+        if (i >= Math.floor(details.average)) {
+            star.querySelector('i').style.color = '#D8D8D8'
+        }
+        document.querySelector('#product-header #product-rating').appendChild(star)
+    }
+
+    const description = document.getElementById('template-product-description').content.cloneNode(true)
+    section2.appendChild(description)
+
+    const actions = document.getElementById('template-product-actions').content.cloneNode(true)
+    section2.appendChild(actions)
+
+    const reviewSection = document.querySelector('.reviews-section')
+
+    // add stats
     let reviewsDetails = document.getElementById('template-reviews-details').content.cloneNode(true)
     reviewSection.appendChild(reviewsDetails)
     reviewsDetails = document.querySelector('#reviews-details')
 
     for(let i=0; i<5; i++) {
         let star = document.getElementById('template-star').content.cloneNode(true)
+        if (i >= Math.floor(details.average)) {
+            star.querySelector('i').style.color = '#D8D8D8'
+        }
         reviewsDetails.querySelector('#avg-stars-wrapper').appendChild(star)
     }
     reviewsDetails.querySelector('.rating-avg').textContent = details.average
@@ -96,9 +120,13 @@ $(document).ready(() => {
         distribution.querySelector('#rating-count').appendChild(count)
     }
 
+    // add filters
+    const filters = document.querySelector('#template-filters').content.cloneNode(true)
+    reviewSection.appendChild(filters)
+
+    // add reviews
     for(let i=0; i<reviews.length; i++) {
         const data = reviews[i]
-        console.log(data)
         const template = document.getElementById('template-review').content.cloneNode(true)
 
         template.querySelector('.author-name').textContent = data.author

@@ -79,10 +79,22 @@
     margin: auto;
 }
 
+.clickable {
+    cursor: pointer;
+}
+
 .fg-primary {
     color: #001F23;
 }
 
 .fg-secondary {
     color: #007A75;
+}
+
+.fg-placeholder {
+    color: #D8D8D8;
+}
+
+.bg-placeholder {
+    background-color: #D8D8D8;
 }
