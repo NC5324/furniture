@@ -8,7 +8,7 @@ $(document).ready(function (){
     }
 
     $('h3').click(function(){
-        if(window.location.pathname.includes('index.html')) {
+        if(window.location.pathname.includes('index.html') || 'furniture/'.includes(window.location.pathname)) {
             window.location.href = './public/browse.html'
         } else {
             window.location.href = './browse.html'
