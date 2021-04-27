@@ -59,13 +59,29 @@ $(document).ready(() => {
         ]
     }
 
+    // get product details
+    const product = JSON.parse(localStorage.getItem('product'))
+
+    // set product pics
     let section1 = document.getElementById('section1')
     const pics = document.getElementById('template-product-pics').content.cloneNode(true)
+    pics.querySelector('.pic-main').style.backgroundImage = `url("${product.thumbnail}")`
     section1.appendChild(pics)
 
+    // set product details
     let section2 = document.getElementById('section2')
     section2.style.height = Math.round(document.querySelector('.pic-main').getBoundingClientRect().height) + 'px'
+
+    // set product title/categories and rating
     const pHeader = document.getElementById('template-product-header').content.cloneNode(true)
+    pHeader.querySelector('h1').textContent = product.name
+
+    /*const categories = product.category
+    for(let i = categories.length-1; i >= 0; i--) {
+
+    }*/
+    pHeader.querySelector('h2').textContent = product.category[1].title
+
     section2.appendChild(pHeader)
     for(let i = 0; i<5; i++) {
         const star = document.getElementById('template-star').content.cloneNode(true)
@@ -76,14 +92,14 @@ $(document).ready(() => {
     }
 
     const description = document.getElementById('template-product-description').content.cloneNode(true)
+    description.querySelector('p').textContent = product.description
     section2.appendChild(description)
 
     const actions = document.getElementById('template-product-actions').content.cloneNode(true)
     section2.appendChild(actions)
 
+    // add reviews stats
     const reviewSection = document.querySelector('.reviews-section')
-
-    // add stats
     let reviewsDetails = document.getElementById('template-reviews-details').content.cloneNode(true)
     reviewSection.appendChild(reviewsDetails)
     reviewsDetails = document.querySelector('#reviews-details')

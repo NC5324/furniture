@@ -25,27 +25,37 @@ const categories = [
 // mock products for testing purposes
 const products = [
     {
+        id: 0,
         name: 'Холна гарнитура BOSNA',
+        description: 'Mn udobni mebeli, no malko skypi. Bacon ipsum dolor amet pastrami drumstick bacon beef cow cupim tri-tip short loin prosciutto porchetta brisket. Meatloaf sausage ham hock leberkas drumstick shankle brisket rump sirloin, turducken cow.\n',
         thumbnail: 'assets/divan1.jpg',
         category: 2
     },
     {
+        id: 1,
         name: 'Холна гарнитура DESTAN',
+        description: 'Mn udobni mebeli. Bacon ipsum dolor amet pastrami drumstick bacon beef cow cupim tri-tip short loin prosciutto porchetta brisket. Meatloaf sausage ham hock leberkas drumstick shankle brisket rump sirloin, turducken cow.',
         thumbnail: 'assets/divan2.jpg',
         category: 2
     },
     {
+        id: 2,
         name: 'Холна гарнитура LUXURY',
+        description: 'Mn skypi4ki mebeli bro. Bacon ipsum dolor amet pastrami drumstick bacon beef cow cupim tri-tip short loin prosciutto porchetta brisket. Meatloaf sausage ham hock leberkas drumstick shankle brisket rump sirloin, turducken cow.',
         thumbnail: 'assets/divan3.jpg',
         category: 2
     },
     {
+        id: 3,
         name: 'Холна гарнитура ESH N SIQUE',
+        description: 'Mn dobri mebeli bratan. Bacon ipsum dolor amet pastrami drumstick bacon beef cow cupim tri-tip short loin prosciutto porchetta brisket. Meatloaf sausage ham hock leberkas drumstick shankle brisket rump sirloin, turducken cow.',
         thumbnail: 'assets/02.jpg',
         category: 2
     },
     {
+        id: 4,
         name: 'Легло',
+        description: 'Mn dobro leglo. Bacon ipsum dolor amet pastrami drumstick bacon beef cow cupim tri-tip short loin prosciutto porchetta brisket. Meatloaf sausage ham hock leberkas drumstick shankle brisket rump sirloin, turducken cow.',
         thumbnail: 'assets/02.jpg',
         category: 9
     }]
@@ -77,6 +87,7 @@ $(document).ready(() => {
         const template = document.querySelector('#item')
         for(let i=0; i<items.length; i++) {
             const clone = template.content.cloneNode(true)
+            clone.querySelector('.item').setAttribute('data-id', `${items[i].id}`)
             clone.querySelector('.item-footer h2').textContent = items[i].name
             clone.querySelector('.item-thumb').style.setProperty('background-image', `url("./${items[i].thumbnail}")`)
             document.querySelector('.browse').appendChild(clone);
@@ -134,4 +145,26 @@ $(document).ready(() => {
     if(ctgId) {
         $('#ctg-'+ctgId).click()
     }
+
+    $('.item').on('click', (e) => {
+        let parent = $(e.target).parent()
+        let id = parent.attr('data-id')
+        while(!id) {
+            parent = $(parent).parent()
+            id = parent.attr('data-id')
+        }
+        let product = items.find(x => `${x.id}` === id)
+
+        let temp = []
+        let category = categories.find(x => x.id === product.category)
+        console.log(category)
+        while(category) {
+            temp.push(category)
+            category = categories.find(x => x.id === category.parentId)
+        }
+        product.category = temp
+
+        localStorage.setItem('product', JSON.stringify(product))
+        window.location.href = 'product.html'
+    })
 })
