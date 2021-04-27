@@ -43,6 +43,9 @@
     word-wrap: anywhere;
     overflow-x: hidden;
     overflow-y: auto;
+
+    flex-grow: 1;
+    text-align: justify;
 }
 
 #product-actions {
