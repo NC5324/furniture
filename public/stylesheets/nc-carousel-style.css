@@ -1,0 +1,45 @@
+.carousel-wrapper {
+    min-height: 100vh;
+    width: 100%;
+    background-image: url("../../assets/vectorpaint.svg");
+    background-repeat: no-repeat;
+    background-size: 100% 30%;
+    background-position: 0 100%;
+
+    display: flex;
+    flex-direction: column;
+    padding: 0 10% 40px;
+}
+
+.header {
+    margin: 3% 0 0 0;
+}
+
+.carousel {
+    width: 100%;
+    flex: 1 0 auto;
+    background: url("../../assets/01.jpg") no-repeat center;
+    background-size: 100% 100%;
+
+    display: flex;
+    flex-direction: row;
+
+    transition: background 1s ease-out;
+    margin-top: 40px;
+    border: 10px solid white;
+}
+
+.btn-l, .btn-r {
+    background-color: #001F23;
+    opacity: 0.1;
+    width: 100px;
+}
+
+.btn-r {
+    margin-left: auto;
+}
+
+.btn-l:hover, .btn-r:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
