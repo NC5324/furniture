@@ -146,13 +146,14 @@ $(document).ready(() => {
         $('#ctg-'+ctgId).click()
     }
 
-    $('.item').on('click', (e) => {
+    $('.browse').on('click', (e) => {
         let parent = $(e.target).parent()
         let id = parent.attr('data-id')
         while(!id) {
             parent = $(parent).parent()
             id = parent.attr('data-id')
         }
+        console.log(parent, id)
         let product = items.find(x => `${x.id}` === id)
 
         let temp = []
