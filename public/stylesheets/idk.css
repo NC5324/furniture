@@ -1,0 +1,48 @@
+#btn-basket {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+
+    background-color: #001F23;
+    border: 1px solid #001F23;
+    cursor: pointer;
+}
+
+#btn-basket > i {
+    color: white;
+}
+
+#btn-basket:hover, #btn-basket:hover > i {
+    background-color: white;
+    color: #001F23;
+}
+
+#cart {
+    position: fixed;
+    left: 0;
+    top:  0;
+    bottom: 0;
+
+    flex-direction: column;
+    z-index: 999;
+    background-color: white;
+    border-right: 1px solid #001F23;
+
+    width: 0;
+    max-width: 100%;
+
+    transition: width 0.3s linear;
+}
+
+#cart > #cart-wrapper {
+    width: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin: 30px;
+
+    transition: width 0.3s linear;
+}

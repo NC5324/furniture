@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="stylesheets/style.css">
     <link rel="stylesheet" href="stylesheets/style-utils.css">
     <link rel="stylesheet" href="stylesheets/style-product-page.css">
+    <link rel="stylesheet" href="stylesheets/idk.css">
 
     <!-- FA Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -24,6 +25,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="scripts/script.js"></script>
     <script src="scripts/product-page-script.js"></script>
+    <script src="scripts/idk-script.js"></script>
 </head>
 <body>
 <div class="container1" style="position: relative">
@@ -86,6 +88,17 @@
 <div id="preview" style="background-color: rgba(10, 10, 10, 0.9); position: fixed; left: 0; top: 0; height: 100vh; width: 100%; display: none">
     <i id="exit-preview" class="fas fa-times txt-lg font-primary clickable" style="position: fixed; right: 50px; top: 50px; color: white;"></i>
     <img src="../assets/02.jpg" alt="picture on focus" style="margin: auto; width: 1000px; max-height: 800px; border-radius: 5px">
+</div>
+<div id="cart">
+    <div id="cart-wrapper" class="flex-col">
+        <div id="cart-header" class="flex-row">
+            <h1 class="font-primary fg-primary txt-lg">Количка</h1>
+            <i id="exit-cart" class="fas fa-times txt-lg font-primary clickable fg-primary" style="margin-left: auto; margin-top: auto"></i>
+        </div>
+    </div>
+</div>
+<div id="btn-basket" class="flex-col">
+    <i class="fas fa-shopping-basket m-auto txt-lg"></i>
 </div>
 <template id="template-product-pics">
     <div class="pic-main bg-placeholder" style="height: 550px;">
