@@ -1,5 +1,6 @@
 .carousel-wrapper {
-    min-height: 100vh;
+    height: 100vh;
+    max-height: 1080px;
     width: 100%;
     background-image: url("../../assets/vectorpaint.svg");
     background-repeat: no-repeat;
@@ -26,12 +27,12 @@
 
     transition: background 1s ease-out;
     margin-top: 40px;
-    border: 10px solid white;
+    outline: 10px solid white;
 }
 
 .btn-l, .btn-r {
     background-color: #001F23;
-    opacity: 0.1;
+    opacity: 0.15;
     width: 100px;
 }
 
@@ -42,4 +43,22 @@
 .btn-l:hover, .btn-r:hover {
     opacity: 0.5;
     cursor: pointer;
+}
+
+@media screen and (max-width: 1024px) {
+    .carousel-wrapper {
+        max-height: 800px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .carousel-wrapper {
+        max-height: 600px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .carousel-wrapper {
+        max-height: 400px;
+    }
 }
