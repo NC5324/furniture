@@ -59,16 +59,14 @@ $(document).ready(() => {
         ]
     }
 
-    // get product details
+    // set product details
     const product = JSON.parse(localStorage.getItem('product'))
 
-    // set product pics
     let section1 = document.getElementById('section1')
     const pics = document.getElementById('template-product-pics').content.cloneNode(true)
     pics.querySelector('.pic-main').style.backgroundImage = `url("${product.thumbnail}")`
     section1.appendChild(pics)
 
-    // set product details
     let section2 = document.getElementById('section2')
     section2.style.height = Math.round(document.querySelector('.pic-main').getBoundingClientRect().height) + 'px'
 
@@ -159,6 +157,7 @@ $(document).ready(() => {
         reviewSection.appendChild(template)
     }
 
+    // adjust stuff on resize
     $(window).on('resize', () => {
         for(let i=0; i<5; i++) {
             const data = details.list[i]
@@ -166,5 +165,22 @@ $(document).ready(() => {
             const width = Math.floor((percent * distribution.querySelectorAll('.outer')[i].getBoundingClientRect().width) / 100)
             distribution.querySelectorAll('.inner')[i].style.width = `${width}px`
         }
+    })
+
+    $('.pic-main').click((e) => {
+        if(window.innerWidth <= 768) {
+            return;
+        }
+
+        const preview = $('#preview')
+        preview.css('display', 'flex')
+        let imgPath = e.target.style.backgroundImage
+        imgPath = imgPath.substring(5, imgPath.length-2)
+        const img = document.querySelector('#preview img')
+        img.setAttribute('src', imgPath)
+    })
+
+    $('#exit-preview').click(() => {
+        $('#preview').css('display', 'none')
     })
 })

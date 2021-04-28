@@ -38,6 +38,14 @@
 .pic-main {
     background-position: center;
     background-size: cover;
+
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.pic-secondary {
+
+    border-radius: 5px;
 }
 
 .product-description {
@@ -138,8 +146,12 @@
     border-radius: 50%;
 }
 
-.review > div {
+.review-author, .review-main {
     padding: 20px 10px 30px 0;
+}
+
+.review-author {
+    flex: 0 0 240px;
 }
 
 @media screen and (max-width: 768px) {
@@ -152,6 +164,7 @@
     #section1 {
         flex-grow: 0;
         margin-right: 0;
+        margin-bottom: 30px;
     }
 
     #section2 {
@@ -165,6 +178,8 @@
     #reviews-details .reviews-subsection {
         border-right: none;
         border-bottom: 1px solid #D8D8D8;
+        padding: 20px 50px 30px;
+        margin: 0 0;
     }
 
     #rating-distribution {
@@ -173,5 +188,11 @@
 
     .review {
         flex-direction: column;
+    }
+
+    .review-author {
+        flex: 0 0 auto;
+        height: auto;
+        padding: 20px 10px 20px 0;
     }
 }

@@ -26,7 +26,7 @@
     <script src="scripts/product-page-script.js"></script>
 </head>
 <body>
-<div class="container">
+<div class="container1" style="position: relative">
     <div class="wrapper">
         <header class="header">
             <img id="logo" src="../assets/sik.png" alt="Kocamanlar Logo" width="223" height="82">
@@ -83,6 +83,10 @@
         <img src="../assets/top2.svg" alt="back to top" width="50px" height="50px">
     </div>
 </div>
+<div id="preview" style="background-color: rgba(10, 10, 10, 0.9); position: fixed; left: 0; top: 0; height: 100vh; width: 100%; display: none">
+    <i id="exit-preview" class="fas fa-times txt-lg font-primary clickable" style="position: fixed; right: 50px; top: 50px; color: white;"></i>
+    <img src="../assets/02.jpg" alt="picture on focus" style="margin: auto; width: 1000px; max-height: 800px; border-radius: 5px">
+</div>
 <template id="template-product-pics">
     <div class="pic-main bg-placeholder" style="height: 550px;">
 
@@ -127,7 +131,7 @@
 </template>
 <template id="template-review">
     <div class="review flex-row divide-b">
-        <div class="review-author flex-col" style="flex: 0 0 240px;">
+        <div class="review-author flex-col">
             <div class="author-avatar"></div>
             <span class="author-name txt-md mt-10 font-primary fg-primary">Review Author</span>
             <span class="posted-on txt-sm font-primary fg-secondary">XX-XX-XXXX</span>
