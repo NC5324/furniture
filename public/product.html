@@ -98,24 +98,30 @@
         <div id="cart-items" class="flex-col mt-20" style="overflow-y: auto;">
         </div>
         <div id="cart-details" class="flex-col" style="margin-top: auto">
-            <h2 class="font-secondary txt-sm">Items in cart: 5</h2>
-            <h2 class="font-secondary txt-sm">Total price: 11000 лв.</h2>
+            <h2 class="font-secondary txt-sm">Items in cart: X</h2>
+            <h2 class="font-secondary txt-sm">Total price: XXXXX лв.</h2>
         </div>
     </div>
 </div>
 <div id="btn-basket" class="flex-col">
     <i class="fas fa-shopping-basket m-auto txt-lg"></i>
 </div>
+
 <template id="template-item-btn-remove">
-    <div class="cart-item-btn-remove clickable" style="position: absolute; top: 10px; right: 10px;">
+    <div class="cart-item-btn-remove clickable">
         <i class="fas fa-times txt-sm"></i>
+    </div>
+</template>
+<template id="template-cart-item-counter">
+    <div class="cart-item-counter clickable font-primary">
+        0
     </div>
 </template>
 <template id="template-item">
     <article class="cart-item flex-col">
         <div class="cart-item-details clickable txt-md font-primary">
             <div class="title">
-                Lorem ipsum dolor sit amet Холова гарнитура BOSNA
+                <div class="sik">Lorem ipsum dolor sit amet Холова гарнитура BOSNA</div>
                 <div class="stars">
                 </div>
             </div>

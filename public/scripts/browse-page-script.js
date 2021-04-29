@@ -29,35 +29,40 @@ const products = [
         name: 'Холна гарнитура BOSNA',
         description: 'Mn udobni mebeli, no malko skypi. Bacon ipsum dolor amet pastrami drumstick bacon beef cow cupim tri-tip short loin prosciutto porchetta brisket. Meatloaf sausage ham hock leberkas drumstick shankle brisket rump sirloin, turducken cow.\n',
         thumbnail: '../assets/divan1.jpg',
-        category: 2
+        category: 2,
+        price: 1900
     },
     {
         id: 1,
         name: 'Холна гарнитура DESTAN',
         description: 'Mn udobni mebeli. Bacon ipsum dolor amet pastrami drumstick bacon beef cow cupim tri-tip short loin prosciutto porchetta brisket. Meatloaf sausage ham hock leberkas drumstick shankle brisket rump sirloin, turducken cow.',
         thumbnail: '../assets/divan2.jpg',
-        category: 2
+        category: 2,
+        price: 2200
     },
     {
         id: 2,
         name: 'Холна гарнитура LUXURY',
         description: 'Mn skypi4ki mebeli bro. Bacon ipsum dolor amet pastrami drumstick bacon beef cow cupim tri-tip short loin prosciutto porchetta brisket. Meatloaf sausage ham hock leberkas drumstick shankle brisket rump sirloin, turducken cow.',
         thumbnail: '../assets/divan3.jpg',
-        category: 2
+        category: 2,
+        price: 3400,
     },
     {
         id: 3,
         name: 'Холна гарнитура ESH N SIQUE',
         description: 'Mn dobri mebeli bratan. Bacon ipsum dolor amet pastrami drumstick bacon beef cow cupim tri-tip short loin prosciutto porchetta brisket. Meatloaf sausage ham hock leberkas drumstick shankle brisket rump sirloin, turducken cow.',
         thumbnail: '../assets/02.jpg',
-        category: 2
+        category: 2,
+        price: 2800
     },
     {
         id: 4,
         name: 'Легло',
         description: 'Mn dobro leglo. Bacon ipsum dolor amet pastrami drumstick bacon beef cow cupim tri-tip short loin prosciutto porchetta brisket. Meatloaf sausage ham hock leberkas drumstick shankle brisket rump sirloin, turducken cow.',
         thumbnail: '../assets/02.jpg',
-        category: 9
+        category: 9,
+        price: 1400
     }]
 
 // self-explanatory, moved into a function for better code readability

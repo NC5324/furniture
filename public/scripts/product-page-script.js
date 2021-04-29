@@ -9,6 +9,8 @@ class Review {
     }
 }
 
+const evCartUpdate = new Event('update-cart')
+
 $(document).ready(() => {
     console.log('DOM fully loaded')
 
@@ -178,6 +180,16 @@ $(document).ready(() => {
         imgPath = imgPath.substring(5, imgPath.length-2)
         const img = document.querySelector('#preview img')
         img.setAttribute('src', imgPath)
+    })
+
+    $('.btn-cart').on('click', () => {
+        let cart = new Map(JSON.parse(localStorage.getItem('cart')))
+        if(!cart) {
+            cart = new Map()
+        }
+        cart.set(JSON.stringify(product), cart.has(JSON.stringify(product)) ? cart.get(JSON.stringify(product))+1 : 1)
+        localStorage.setItem('cart', JSON.stringify(Array.from(cart.entries())))
+        document.dispatchEvent(evCartUpdate)
     })
 
     $('#exit-preview').click(() => {

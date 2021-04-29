@@ -51,6 +51,7 @@
 .product-description {
     margin-top: 30px;
     margin-bottom: 30px;
+    padding-right: 5px;
     justify-self: center;
     word-wrap: anywhere;
     overflow-x: hidden;
