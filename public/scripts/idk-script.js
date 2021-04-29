@@ -1,4 +1,8 @@
 $(document).ready(() => {
+
+
+
+
     $(document).click((e) => {
         if(document.getElementById('cart').getBoundingClientRect().width > 1) {
             if(e.pageX > 400) {

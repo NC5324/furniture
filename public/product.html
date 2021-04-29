@@ -90,16 +90,41 @@
     <img src="../assets/02.jpg" alt="picture on focus" style="margin: auto; width: 1000px; max-height: 800px; border-radius: 5px">
 </div>
 <div id="cart">
-    <div id="cart-wrapper" class="flex-col">
+    <div id="cart-wrapper" class="flex-col" style="height: calc(100% - 60px)">
         <div id="cart-header" class="flex-row">
             <h1 class="font-primary fg-primary txt-lg">Количка</h1>
             <i id="exit-cart" class="fas fa-times txt-lg font-primary clickable fg-primary" style="margin-left: auto; margin-top: auto"></i>
+        </div>
+        <div id="cart-items" class="flex-col mt-20" style="overflow-y: auto;">
+        </div>
+        <div id="cart-details" class="flex-col" style="margin-top: auto">
+            <h2 class="font-secondary txt-sm">Items in cart: 5</h2>
+            <h2 class="font-secondary txt-sm">Total price: 11000 лв.</h2>
         </div>
     </div>
 </div>
 <div id="btn-basket" class="flex-col">
     <i class="fas fa-shopping-basket m-auto txt-lg"></i>
 </div>
+<template id="template-item-btn-remove">
+    <div class="cart-item-btn-remove clickable" style="position: absolute; top: 10px; right: 10px;">
+        <i class="fas fa-times txt-sm"></i>
+    </div>
+</template>
+<template id="template-item">
+    <article class="cart-item flex-col">
+        <div class="cart-item-details clickable txt-md font-primary">
+            <div class="title">
+                Lorem ipsum dolor sit amet Холова гарнитура BOSNA
+                <div class="stars">
+                </div>
+            </div>
+            <div class="cart-item-price font-primary">
+                2200 лв.
+            </div>
+        </div>
+    </article>
+</template>
 <template id="template-product-pics">
     <div class="pic-main bg-placeholder" style="height: 550px;">
 

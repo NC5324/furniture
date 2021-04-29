@@ -40,9 +40,91 @@
 
 #cart > #cart-wrapper {
     width: 0;
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow: hidden;
     margin: 30px;
 
     transition: width 0.3s linear;
+}
+
+#cart-items > .cart-item {
+    margin-right: 5px;
+}
+
+#cart-items {
+    overflow-x: hidden;
+}
+
+.cart-item {
+    flex: 0 0 250px;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+
+    background: url("../../assets/divan1.jpg") no-repeat center;
+    background-size: auto 100%;
+}
+
+.cart-item-details {
+    background-color: rgba(10, 10, 10, 0.5);
+    color: white;
+    padding: 10px;
+    text-align: center;
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+
+    height: 100px;
+    transition: height 0.15s ease-out;
+}
+
+.cart-item-price {
+    font-size: 50px;
+    color: white;
+    text-align: center;
+    margin: auto;
+    display: none;
+}
+
+.cart-item-details > .title .stars {
+    display: none;
+    margin: 10px auto;
+}
+
+.cart-item-details .title {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-item:hover .cart-item-details {
+    height: 100%;
+}
+
+.cart-item:hover .cart-item-details .title {
+    margin-top: 0;
+}
+
+.cart-item:hover .cart-item-details > .title .stars {
+    display: flex;
+}
+
+.cart-item:hover .cart-item-btn-remove {
+    display: none;
+}
+
+.cart-item:hover .cart-item-price {
+    display: flex;
+}
+
+.cart-item-btn-remove {
+    width: 30px;
+    height: 30px;
+    display: flex
+}
+
+.cart-item-btn-remove i {
+    color: white;
+    -webkit-text-stroke-color: #001F23;
+    -webkit-text-stroke-width: 2px;
+    margin: auto
 }
