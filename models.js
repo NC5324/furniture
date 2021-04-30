@@ -12,6 +12,14 @@ const Furniture = db.define('furniture', {
         type: DataTypes.STRING,
         allowNull: true
     },
+    description: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    thumbnail: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
     price: {
         type: DataTypes.REAL(10, 2),
         allowNull: true
@@ -27,6 +35,15 @@ const Category = db.define('category', {
         primaryKey: true,
         autoIncrement: true,
         allowNull: false
+    },
+    parentId: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+    },
+    level: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+        allowNull: false,
     },
     name: {
         type: DataTypes.STRING,
@@ -70,7 +87,9 @@ Category.belongsToMany(Furniture, {
     through: CategoryFurniture
 })
 
-Furniture.sync()
+Furniture.sync({
+    alter: true
+})
 Category.sync()
 CategoryFurniture.sync()
 

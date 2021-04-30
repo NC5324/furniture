@@ -8,6 +8,10 @@
     flex-direction: row;
 }
 
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
 .txt-lg {
     font-size: 30px;
 }
@@ -38,6 +42,14 @@
 
 .mr-10 {
     margin-right: 10px;
+}
+
+.mr-20 {
+    margin-right: 20px;
+}
+
+.mb-5 {
+    margin-bottom: 5px;
 }
 
 .pd-r-15 {

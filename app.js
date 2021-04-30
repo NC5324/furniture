@@ -11,7 +11,7 @@ app.use(express.json())
 app.use(cors())
 app.use(cookieParser())
 
-const jwtSecret = 'secretarka123'
+/*const jwtSecret = 'secretarka123'
 
 app.get('/jwt', (req, res, next) => {
   const token = jsonwebtoken.sign({user: 'NC5324', password: 'strongPass123'}, jwtSecret)
@@ -25,9 +25,9 @@ app.use(jwt({
     getToken: req => {
         return req.cookies.token
     }
-}))
+}))*/
 
-app.use('/furniture', furniture)
+app.use('/api/furniture', furniture)
 
 app.listen(3000, () => {
   console.log('App running at http://localhost:3000/')

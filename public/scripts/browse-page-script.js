@@ -78,10 +78,6 @@ function createCheckBox(ctgId) {
 $(document).ready(() => {
     console.log('Document is fully loaded.')
 
-    if(window.innerWidth > 900) {
-        document.getElementById('ctg-menu').open = true
-    }
-
     let selected = []
     let items = products
 
@@ -89,13 +85,23 @@ $(document).ready(() => {
     const filterEvent = new Event('filter')
     document.addEventListener('filter', () => {
         $('.browse').empty()
-        const template = document.querySelector('#item')
+        const template = document.querySelector('#template-item')
         for(let i=0; i<items.length; i++) {
-            const clone = template.content.cloneNode(true)
-            clone.querySelector('.item').setAttribute('data-id', `${items[i].id}`)
-            clone.querySelector('.item-footer h2').textContent = items[i].name
-            clone.querySelector('.item-thumb').style.setProperty('background-image', `url("./${items[i].thumbnail}")`)
-            document.querySelector('.browse').appendChild(clone);
+            const product = items[i]
+            const item = template.content.cloneNode(true)
+            item.querySelector('.item').setAttribute('data-id', `${product.id}`)
+            item.querySelector('.item').style.backgroundImage = `url("${product.thumbnail}")`
+            item.querySelector('.item-title').textContent = product.name
+            const rating = Math.floor(Math.random() * (5 - 1)) + 1
+            for(let j = 0; j<5; j++) {
+                const star = document.querySelector('#template-star').content.cloneNode(true)
+                if (j >= rating) {
+                    star.querySelector('i').style.color = '#D8D8D8'
+                }
+                item.querySelector('.item-rating').appendChild(star)
+            }
+            item.querySelector('.item-price').textContent = `${product.price} лв.`
+            document.querySelector('.browse').appendChild(item)
         }
     })
 
@@ -151,14 +157,10 @@ $(document).ready(() => {
         $('#ctg-'+ctgId).click()
     }
 
-    $('.browse').on('click', (e) => {
-        let parent = $(e.target).parent()
-        let id = parent.attr('data-id')
-        while(!id) {
-            parent = $(parent).parent()
-            id = parent.attr('data-id')
-        }
-        console.log(parent, id)
+    $('.item').on('click', (ev) => {
+        const htmlEl = ev.currentTarget
+        const id = htmlEl.getAttribute('data-id')
+        console.log(htmlEl, id)
         let product = items.find(x => `${x.id}` === id)
 
         let temp = []
