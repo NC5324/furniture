@@ -1,69 +1,44 @@
-class Category {
-    constructor(parentId, id, lvl, title) {
-        this.parentId = parentId
-        this.id = id
-        this.lvl = lvl
-        this.title = title
+const apiUrl = 'http://localhost:3000/api'
+
+async function getAllCategories() {
+    try {
+        return await $.get(`${apiUrl}/category/all`)
+    }
+    catch(err) {
+        console.log(err)
     }
 }
 
-// mock categories for testing purposes
-const categories = [
-    new Category(null, 1, 0, 'Холна гарнитура'),
-    new Category(1, 2, 1, 'Дивани'),
-    new Category(1, 3, 1, 'Фотьойли'),
-    new Category(1, 4, 1, 'Холни маси'),
-    new Category(2, 5, 2, 'Разтегателни дивани'),
-    new Category(2, 6, 2, 'Ъглови дивани'),
-    new Category(null, 7, 0, 'Спалня'),
-    new Category(null, 8, 0, 'Кухня'),
-    new Category(7, 9, 1, 'Легла'),
-    new Category(7, 10, 1, 'Нощни шкафчета'),
-    new Category(7, 11, 1, 'Ракли')
-]
+async function filterFurniture(perPage, currentPage, categories) {
+    const request = {
+        perPage: perPage,
+        currentPage: currentPage,
+        categories: categories
+    }
+    try {
+        return await $.ajax({
+            url: `${apiUrl}/furniture/test`,
+            type: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            data: JSON.stringify(request),
+            contentType: 'application/json'
+        })
+    }
+    catch(err) {
+        console.log(err)
+    }
+}
 
-// mock products for testing purposes
-const products = [
-    {
-        id: 0,
-        name: 'Холна гарнитура BOSNA',
-        description: 'Mn udobni mebeli, no malko skypi. Bacon ipsum dolor amet pastrami drumstick bacon beef cow cupim tri-tip short loin prosciutto porchetta brisket. Meatloaf sausage ham hock leberkas drumstick shankle brisket rump sirloin, turducken cow.\n',
-        thumbnail: '../assets/divan1.jpg',
-        category: 2,
-        price: 1900
-    },
-    {
-        id: 1,
-        name: 'Холна гарнитура DESTAN',
-        description: 'Mn udobni mebeli. Bacon ipsum dolor amet pastrami drumstick bacon beef cow cupim tri-tip short loin prosciutto porchetta brisket. Meatloaf sausage ham hock leberkas drumstick shankle brisket rump sirloin, turducken cow.',
-        thumbnail: '../assets/divan2.jpg',
-        category: 2,
-        price: 2200
-    },
-    {
-        id: 2,
-        name: 'Холна гарнитура LUXURY',
-        description: 'Mn skypi4ki mebeli bro. Bacon ipsum dolor amet pastrami drumstick bacon beef cow cupim tri-tip short loin prosciutto porchetta brisket. Meatloaf sausage ham hock leberkas drumstick shankle brisket rump sirloin, turducken cow.',
-        thumbnail: '../assets/divan3.jpg',
-        category: 2,
-        price: 3400,
-    },
-    {
-        id: 3,
-        name: 'Холна гарнитура ESH N SIQUE',
-        description: 'Mn dobri mebeli bratan. Bacon ipsum dolor amet pastrami drumstick bacon beef cow cupim tri-tip short loin prosciutto porchetta brisket. Meatloaf sausage ham hock leberkas drumstick shankle brisket rump sirloin, turducken cow.',
-        thumbnail: '../assets/02.jpg',
-        category: 2,
-        price: 2800
-    },
-    {
-        id: 4,
-        name: 'Легло',
-        description: 'Mn dobro leglo. Bacon ipsum dolor amet pastrami drumstick bacon beef cow cupim tri-tip short loin prosciutto porchetta brisket. Meatloaf sausage ham hock leberkas drumstick shankle brisket rump sirloin, turducken cow.',
-        thumbnail: '../assets/02.jpg',
-        category: 9,
-        price: 1400
-    }]
+async function getFurniture(id) {
+    try {
+        return await $.get(`${apiUrl}/furniture/${id}`)
+    }
+    catch(err) {
+        console.log(err)
+    }
+}
 
 // self-explanatory, moved into a function for better code readability
 function createCheckBox(ctgId) {
@@ -78,99 +53,111 @@ function createCheckBox(ctgId) {
 $(document).ready(() => {
     console.log('Document is fully loaded.')
 
-    if(window.innerWidth > 900) {
-        document.getElementById('ctg-menu').open = true
-    }
-
     let selected = []
-    let items = products
 
     // populate the browsing section when there is a change in selected filters
-    const filterEvent = new Event('filter')
-    document.addEventListener('filter', () => {
-        $('.browse').empty()
-        const template = document.querySelector('#item')
-        for(let i=0; i<items.length; i++) {
-            const clone = template.content.cloneNode(true)
-            clone.querySelector('.item').setAttribute('data-id', `${items[i].id}`)
-            clone.querySelector('.item-footer h2').textContent = items[i].name
-            clone.querySelector('.item-thumb').style.setProperty('background-image', `url("./${items[i].thumbnail}")`)
-            document.querySelector('.browse').appendChild(clone);
-        }
+    //const filterEvent = new CustomEvent('filter', { selected: [] })
+    document.addEventListener('filter', (ev) => {
+        filterFurniture(999, 1, ev.detail).then((res) => {
+            const items = Array.from(res.rows)
+            const template = document.querySelector('#template-item')
+            $('.browse').empty()
+            for(let i=0; i<items.length; i++) {
+                const product = items[i]
+                const item = template.content.cloneNode(true)
+                item.querySelector('.item').setAttribute('data-id', `${product.id}`)
+                item.querySelector('.item').style.backgroundImage = `url("${product.thumbnail}")`
+                item.querySelector('.item-title').textContent = product.name
+                const rating = Math.floor(Math.random() * (5 - 1)) + 1
+                for(let j = 0; j<5; j++) {
+                    const star = document.querySelector('#template-star').content.cloneNode(true)
+                    if (j >= rating) {
+                        star.querySelector('i').style.color = '#D8D8D8'
+                    }
+                    item.querySelector('.item-rating').appendChild(star)
+                }
+                item.querySelector('.item-price').textContent = `${product.price} лв.`
+                document.querySelector('.browse').appendChild(item)
+            }
+            document.dispatchEvent(new Event('items-created'))
+            console.log(Array.from($('.item')))
+        })
     })
 
-    // initialize browsing section
-    document.dispatchEvent(filterEvent)
-
     // script for generating nested categories using the category template
-    const maxLvl = Math.max.apply(Math, categories.map(x => x.lvl))
-    for(let level = 0; level <= maxLvl; level++) {
-        const ctgs = categories.filter(category => category.lvl === level)
-        for(let ctg = 0; ctg < ctgs.length; ctg++) {
-            const container = !ctgs[ctg].parentId ?
-                document.querySelector('#categories') :
-                document.querySelector(`details[data-id='${ctgs[ctg].parentId}']`)
+    getAllCategories().then((res) => {
+        const categories = Array.from(res)
+        selected = categories.map(x => x.id)
+        const maxLevel = Math.max.apply(Math, categories.map(x => x.level))
+        for (let level = 0; level <= maxLevel; level++) {
+            const ctgs = categories.filter(category => category.level === level)
+            for (let ctg = 0; ctg < ctgs.length; ctg++) {
+                const container = !ctgs[ctg].parentId ?
+                    document.querySelector('#categories') :
+                    document.querySelector(`details[data-id='${ctgs[ctg].parentId}']`)
 
-            const clone = document.querySelector('#category').content.cloneNode(true)
-            clone.querySelector('details').setAttribute('data-id', ctgs[ctg].id + '')
-            clone.querySelector('details').style.paddingLeft = level > 0 ? '30px' : ''
-            clone.querySelector('details').style.marginLeft  = level > 0 ? '' : '-20px'
+                const clone = document.querySelector('#category').content.cloneNode(true)
+                clone.querySelector('details').setAttribute('data-id', ctgs[ctg].id + '')
+                clone.querySelector('details').style.paddingLeft = level > 0 ? '30px' : ''
+                clone.querySelector('details').style.marginLeft = level > 0 ? '' : '-20px'
 
 
-            const summary = clone.querySelector('summary')
-            const checkBox = createCheckBox(ctgs[ctg].id)
+                const summary = clone.querySelector('summary')
+                const checkBox = createCheckBox(ctgs[ctg].id)
 
-            // remove expand icons if no children categories
-            const children = categories.filter(x => x.lvl > ctgs[ctg].lvl && x.parentId === ctgs[ctg].id)
-            if(children.length === 0) {
-                clone.querySelector(`details[data-id="${ctgs[ctg].id}"] summary .test`).setAttribute('data-after-closed', '')
-                clone.querySelector(`details[data-id="${ctgs[ctg].id}"] summary .test`).setAttribute('data-after-open', '')
-            }
+                // remove expand icons if no children categories
+                const children = categories.filter(x => x.level > ctgs[ctg].level && x.parentId === ctgs[ctg].id)
+                if (children.length === 0) {
+                    clone.querySelector(`details[data-id="${ctgs[ctg].id}"] summary .test`).setAttribute('data-after-closed', '')
+                    clone.querySelector(`details[data-id="${ctgs[ctg].id}"] summary .test`).setAttribute('data-after-open', '')
+                }
 
-            // select children categories on category selection
-            // fire an event for filtering
-            $(checkBox).change(() => {
-                children.forEach(x => {
-                    $('#ctg-' + x.id).click()
+                // select children categories on category selection
+                // fire an event for filtering
+                $(checkBox).change(() => {
+                    children.forEach(x => {
+                        const checkbox = $('#ctg-' + x.id)[0]
+                        checkbox.checked = !checkbox.checked
+                    })
+
+                    selected = Array.from(document.querySelectorAll('input[type="checkbox"]'))
+                        .filter(x => x.checked)
+                        .map(x => Number(x.id.split('-')[1]))
+                    if(selected.length === 0) {
+                        getAllCategories().then((res) => {
+                            const categories = Array.from(res)
+                            const selected = categories.map(x => x.id)
+                            document.dispatchEvent(new CustomEvent('filter', { detail: selected }))
+                        })
+                    } else {
+                        document.dispatchEvent(new CustomEvent('filter', { detail: selected }))
+                    }
                 })
 
-                selected = Array.from(document.querySelectorAll('input[type="checkbox"]')).filter(x => x.checked).map(x => Number(x.id.split('-')[1]))
-                items = selected.length === 0 ? products : products.filter(x => selected.includes(x.category))
-
-                document.dispatchEvent(filterEvent)
-            })
-
-            const title = document.createTextNode(ctgs[ctg].title);
-            summary.querySelector('.test').append(checkBox, title)
-            container.appendChild(clone)
+                const title = document.createTextNode(ctgs[ctg].name);
+                summary.querySelector('.test').append(checkBox, title)
+                container.appendChild(clone)
+            }
         }
-    }
+        // initialize browsing section
+        document.dispatchEvent(new CustomEvent('filter', { detail: selected }))
+    })
 
     const ctgId = Number(localStorage.getItem('category'))
     if(ctgId) {
         $('#ctg-'+ctgId).click()
     }
 
-    $('.browse').on('click', (e) => {
-        let parent = $(e.target).parent()
-        let id = parent.attr('data-id')
-        while(!id) {
-            parent = $(parent).parent()
-            id = parent.attr('data-id')
-        }
-        console.log(parent, id)
-        let product = items.find(x => `${x.id}` === id)
+    $(document).on('items-created', () => {
+        $('.item').on('click', (ev) => {
+            const htmlEl = ev.currentTarget
+            const id = htmlEl.getAttribute('data-id')
+            console.log(htmlEl, id)
 
-        let temp = []
-        let category = categories.find(x => x.id === product.category)
-        console.log(category)
-        while(category) {
-            temp.push(category)
-            category = categories.find(x => x.id === category.parentId)
-        }
-        product.category = temp
-
-        localStorage.setItem('product', JSON.stringify(product))
-        window.location.href = 'product.html'
+            getFurniture(id).then((product) => {
+                localStorage.setItem('product', JSON.stringify(product))
+                window.location.href = 'product.html'
+            })
+        })
     })
 })

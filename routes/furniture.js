@@ -1,6 +1,6 @@
 import express from 'express'
 import { Furniture, Category } from '../models'
-import PageRequest from '../requests/page_request.js'
+import { Op } from 'sequelize'
 
 const router = express.Router()
 
@@ -15,9 +15,17 @@ router.get('/all', (req, res, next) => {
     )
 })
 
-router.get('/test', (req, res, next) => {
-    Furniture.findAll({
-        include: Category
+router.get('/:id', (req, res, next) => {
+    Furniture.findOne({
+        include: [{
+            model: Category,
+            through: {
+                attributes: []
+            }
+        }],
+        where: {
+            id: req.params.id
+        }
     }).then(
         r => {
             res.status(200).json(r)
@@ -28,15 +36,12 @@ router.get('/test', (req, res, next) => {
     )
 })
 
-router.get('/page', (req, res, next) => {
-    const request = new PageRequest(req.body.perPage, req.body.currentPage)
-    Furniture.findAndCountAll({
-        limit: request.perPage,
-        offset: (request.currentPage - 1) * request.perPage
-    }).then(
+router.post('/test', (req, res, next) => {
+    console.log(req.body)
+    filter(req).then(
         r => {
-            r.perPage = request.perPage
-            r.currentPage = request.currentPage
+            r.perPage = req.body.perPage
+            r.currentPage = req.body.currentPage
             res.status(200).json(r)
         },
         err => {
@@ -44,5 +49,50 @@ router.get('/page', (req, res, next) => {
         }
     )
 })
+
+router.get('/filter', (req, res, next) => {
+    filter(req).then(
+        r => {
+            r.perPage = req.body.perPage
+            r.currentPage = req.body.currentPage
+            res.status(200).json(r)
+        },
+        err => {
+            console.log(err)
+        }
+    )
+})
+
+function filter(req) {
+    const request = req.body
+    if(request.categories) {
+        return Furniture.findAndCountAll({
+            include: [{
+                model: Category,
+                through: {
+                    attributes: []
+                },
+                where: {
+                    id: {
+                        [Op.in]: request.categories
+                    }
+                }
+            }],
+            limit: request.perPage,
+            offset: (request.currentPage - 1) * request.perPage
+        })
+    } else {
+        return Furniture.findAndCountAll({
+            include: [{
+                model: Category,
+                through: {
+                    attributes: []
+                }
+            }],
+            limit: request.perPage,
+            offset: (request.currentPage - 1) * request.perPage
+        })
+    }
+}
 
 export default router
