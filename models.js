@@ -9,20 +9,16 @@ const Furniture = db.define('furniture', {
         allowNull: false
     },
     name: {
-        type: DataTypes.STRING,
-        allowNull: true
+        type: DataTypes.STRING
     },
     description: {
-        type: DataTypes.STRING,
-        allowNull: true
+        type: DataTypes.STRING
     },
     thumbnail: {
-        type: DataTypes.STRING,
-        allowNull: true
+        type: DataTypes.STRING
     },
     price: {
-        type: DataTypes.REAL(10, 2),
-        allowNull: true
+        type: DataTypes.REAL(10, 2)
     }
 }, {
     tableName: 'furniture',
@@ -37,8 +33,7 @@ const Category = db.define('category', {
         allowNull: false
     },
     parentId: {
-        type: DataTypes.INTEGER,
-        allowNull: true,
+        type: DataTypes.INTEGER
     },
     level: {
         type: DataTypes.INTEGER,
@@ -46,12 +41,37 @@ const Category = db.define('category', {
         allowNull: false,
     },
     name: {
-        type: DataTypes.STRING,
-        allowNull: true
+        type: DataTypes.STRING
     }
 }, {
     tableName: 'category',
     timestamps: false
+})
+
+const Review = db.define('review', {
+    id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+        allowNull: false
+    },
+    title: {
+        type: DataTypes.STRING(20)
+    },
+    rating: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    description: {
+        type: DataTypes.STRING
+    },
+    author: {
+        type: DataTypes.STRING
+    }
+}, {
+    tableName: 'review',
+    createdAt: 'postedOn',
+    updatedAt: false
 })
 
 const CategoryFurniture = db.define('CategoryFurniture', {
@@ -80,6 +100,9 @@ const CategoryFurniture = db.define('CategoryFurniture', {
     timestamps: false
 })
 
+Furniture.hasMany(Review)
+Review.belongsTo(Furniture)
+
 Furniture.belongsToMany(Category, {
     through: CategoryFurniture
 })
@@ -87,10 +110,9 @@ Category.belongsToMany(Furniture, {
     through: CategoryFurniture
 })
 
-Furniture.sync({
-    alter: true
-})
+Furniture.sync()
 Category.sync()
+Review.sync()
 CategoryFurniture.sync()
 
 

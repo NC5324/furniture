@@ -4,6 +4,7 @@ import jsonwebtoken from 'jsonwebtoken'
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
 import furniture from './routes/furniture.js'
+import category from './routes/category.js'
 
 const app = express()
 
@@ -28,6 +29,7 @@ app.use(jwt({
 }))*/
 
 app.use('/api/furniture', furniture)
+app.use('/api/category', category)
 
 app.listen(3000, () => {
   console.log('App running at http://localhost:3000/')
