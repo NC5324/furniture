@@ -15,6 +15,41 @@ router.get('/all', (req, res, next) => {
     )
 })
 
+router.get('/:id', (req, res, next) => {
+    Furniture.findOne({
+        include: [{
+            model: Category,
+            through: {
+                attributes: []
+            }
+        }],
+        where: {
+            id: req.params.id
+        }
+    }).then(
+        r => {
+            res.status(200).json(r)
+        },
+        err => {
+            console.log(err)
+        }
+    )
+})
+
+router.post('/test', (req, res, next) => {
+    console.log(req.body)
+    filter(req).then(
+        r => {
+            r.perPage = req.body.perPage
+            r.currentPage = req.body.currentPage
+            res.status(200).json(r)
+        },
+        err => {
+            console.log(err)
+        }
+    )
+})
+
 router.get('/filter', (req, res, next) => {
     filter(req).then(
         r => {

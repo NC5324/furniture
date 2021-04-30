@@ -116,4 +116,4 @@ Review.sync()
 CategoryFurniture.sync()
 
 
-export { Furniture, Category }
+export { Furniture, Category, Review }

@@ -55,6 +55,8 @@
 footer {
     min-height: 280px;
     background-color: #FF3E57;
+
+    margin-top: 40px;
 }
 
 .nav {
