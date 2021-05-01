@@ -113,7 +113,7 @@ $(document).ready(() => {
                 const template = document.getElementById('template-review').content.cloneNode(true)
 
                 template.querySelector('.author-name').textContent = data.author
-                template.querySelector('.posted-on').textContent = data.date
+                template.querySelector('.posted-on').textContent = `${data.postedOn}`.split('T')[0]
                 template.querySelector('.review-title').textContent = data.title
                 for(let j = 0; j<5; j++) {
                     const star = document.querySelector('#template-star').content.cloneNode(true)

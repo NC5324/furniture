@@ -40,6 +40,35 @@ async function getFurniture(id) {
     }
 }
 
+async function getChildren(categoryId, categoryLevel) {
+    const request = {
+        id: categoryId,
+        level: categoryLevel
+    }
+    try {
+        return await $.ajax({
+            url: `${apiUrl}/category/children`,
+            type: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            data: JSON.stringify(request),
+            contentType: 'application/json'
+        })
+    }
+    catch(err) {
+        console.log(err)
+    }
+}
+
+async function getReviewStats(id) {
+    try {
+        return await $.get(`${apiUrl}/review/stats/${id}`)
+    }
+    catch(err) {
+        console.log(err)
+    }
+}
 // self-explanatory, moved into a function for better code readability
 function createCheckBox(ctgId) {
     const check = document.createElement('input')
@@ -64,23 +93,32 @@ $(document).ready(() => {
             $('.browse').empty()
             for(let i=0; i<items.length; i++) {
                 const product = items[i]
-                const item = template.content.cloneNode(true)
-                item.querySelector('.item').setAttribute('data-id', `${product.id}`)
-                item.querySelector('.item').style.backgroundImage = `url("${product.thumbnail}")`
-                item.querySelector('.item-title').textContent = product.name
-                const rating = Math.floor(Math.random() * (5 - 1)) + 1
-                for(let j = 0; j<5; j++) {
-                    const star = document.querySelector('#template-star').content.cloneNode(true)
-                    if (j >= rating) {
-                        star.querySelector('i').style.color = '#D8D8D8'
+                getReviewStats(product.id).then((stats) => {
+                    const item = template.content.cloneNode(true)
+                    item.querySelector('.item').setAttribute('data-id', `${product.id}`)
+                    item.querySelector('.item').style.backgroundImage = `url("${product.thumbnail}")`
+                    item.querySelector('.item-title').textContent = product.name
+                    const rating = stats.average
+                    for(let j = 0; j<5; j++) {
+                        const star = document.querySelector('#template-star').content.cloneNode(true)
+                        if (j >= rating) {
+                            star.querySelector('i').style.color = '#D8D8D8'
+                        }
+                        item.querySelector('.item-rating').appendChild(star)
                     }
-                    item.querySelector('.item-rating').appendChild(star)
-                }
-                item.querySelector('.item-price').textContent = `${product.price} лв.`
-                document.querySelector('.browse').appendChild(item)
+                    item.querySelector('.item-price').textContent = `${product.price} лв.`
+                    document.querySelector('.browse').appendChild(item)
+                    $('.item').on('click', (ev) => {
+                        const htmlEl = ev.currentTarget
+                        const id = htmlEl.getAttribute('data-id')
+
+                        getFurniture(id).then((product) => {
+                            localStorage.setItem('product', JSON.stringify(product))
+                            window.location.href = 'product.html'
+                        })
+                    })
+                })
             }
-            document.dispatchEvent(new Event('items-created'))
-            console.log(Array.from($('.item')))
         })
     })
 
@@ -118,6 +156,11 @@ $(document).ready(() => {
                     children.forEach(x => {
                         const checkbox = $('#ctg-' + x.id)[0]
                         checkbox.checked = !checkbox.checked
+                        const children1 = categories.filter(z => z.level > x.level && z.parentId === x.id)
+                        children1.forEach(y => {
+                            const checkbox = $('#ctg-' + y.id)[0]
+                            checkbox.checked = !checkbox.checked
+                        })
                     })
 
                     selected = Array.from(document.querySelectorAll('input[type="checkbox"]'))
@@ -139,25 +182,17 @@ $(document).ready(() => {
                 container.appendChild(clone)
             }
         }
+    }).then(() => {
+        document.dispatchEvent(new Event('ctgs-loaded'))
         // initialize browsing section
-        document.dispatchEvent(new CustomEvent('filter', { detail: selected }))
+        //document.dispatchEvent(new CustomEvent('filter', { detail: selected }))
     })
 
-    const ctgId = Number(localStorage.getItem('category'))
-    if(ctgId) {
-        $('#ctg-'+ctgId).click()
-    }
-
-    $(document).on('items-created', () => {
-        $('.item').on('click', (ev) => {
-            const htmlEl = ev.currentTarget
-            const id = htmlEl.getAttribute('data-id')
-            console.log(htmlEl, id)
-
-            getFurniture(id).then((product) => {
-                localStorage.setItem('product', JSON.stringify(product))
-                window.location.href = 'product.html'
-            })
-        })
+    //check categories after loading from navigation link
+    $(document).on('ctgs-loaded', () => {
+        const ctgId = Number(localStorage.getItem('category'))
+        if(ctgId) {
+            $('#ctg-'+ctgId)[0].click()
+        }
     })
 })

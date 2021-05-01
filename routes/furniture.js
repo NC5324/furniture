@@ -37,7 +37,6 @@ router.get('/:id', (req, res, next) => {
 })
 
 router.post('/test', (req, res, next) => {
-    console.log(req.body)
     filter(req).then(
         r => {
             r.perPage = req.body.perPage
