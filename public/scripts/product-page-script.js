@@ -19,6 +19,23 @@ async function getReviewStats() {
     }
 }
 
+async function createReview(request) {
+    try {
+        return await $.ajax({
+            url: `${apiUrl}/review/new`,
+            type: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            data: JSON.stringify(request),
+            contentType: 'application/json'
+        })
+    }
+    catch(err) {
+        console.log(err)
+    }
+}
+
 const evCartUpdate = new Event('update-cart')
 
 $(document).ready(() => {
@@ -108,9 +125,16 @@ $(document).ready(() => {
         const btnSubmitReview = document.querySelector('#add-review #submit')
         btnSubmitReview.addEventListener('click', () => {
             const reviewForm = $('#add-review');
-
-
-            reviewForm.css('display', 'none')
+            const request = {}
+            request.rating = $('#input-rating')[0].valueAsNumber
+            request.author = $('#input-author')[0].value
+            request.title = $('#input-title')[0].value
+            request.description = $('#input-review')[0].value
+            request.furnitureId = product.id
+            createReview(request).then((res) => {
+                console.log(res)
+                window.location.reload(true)
+            })
         })
 
         const btnAddReview = document.querySelector('.btn-review')
@@ -128,6 +152,9 @@ $(document).ready(() => {
         // add reviews
         getReviews().then((res) => {
             const reviews = Array.from(res)
+            reviews.sort((a, b) => {
+                return b.id-a.id
+            })
             for(let i=0; i<reviews.length; i++) {
                 const data = reviews[i]
                 const template = document.getElementById('template-review').content.cloneNode(true)

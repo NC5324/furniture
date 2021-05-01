@@ -81,4 +81,23 @@ router.get('/stats/:furnitureId', (req, res, next) => {
     )
 })
 
+router.post('/new', (req, res, next) => {
+    console.log('body', req.body)
+    Review.create({
+        rating: req.body.rating,
+        author: req.body.author,
+        title: req.body.title,
+        description: req.body.description,
+        furnitureId: req.body.furnitureId
+    }).then(
+        r => {
+            res.message = 'Created new review successfully'
+            res.status(200).json(r)
+        },
+        err => {
+            console.log(err)
+        }
+    )
+})
+
 export default router
