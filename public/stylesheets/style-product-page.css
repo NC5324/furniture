@@ -129,6 +129,62 @@
     flex: 0 0 240px;
 }
 
+#add-review {
+    font-family: "Roboto", "Open Sans", "Arial", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #001F23;
+
+    width: 600px;
+    margin: 20px auto;
+
+    display: none;
+    flex-direction: column;
+}
+
+#add-review > label {
+    display: block;
+    margin-bottom: 3px;
+}
+
+#add-review > input, #add-review > textarea {
+    outline: 0;
+    padding: 10px;
+
+    font-size: 16px;
+    color: #001F23;
+
+    border: 1px solid #D8D8D8;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+#add-review > textarea {
+    min-height: 200px;
+    resize: vertical;
+}
+
+#add-review > #submit {
+    outline: 0;
+    padding: 10px;
+    max-width: 200px;
+
+    font-family: "Roboto", "Open Sans", "Arial", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+
+    border: 1px solid #245501;
+    border-radius: 5px;
+    background-color: #245501;
+    color: white;
+
+    cursor: pointer;
+}
+
+#add-review > #submit:hover {
+    background-color: #246000;
+}
+
 @media screen and (max-width: 768px) {
     .main-content {
         flex-flow: column nowrap;

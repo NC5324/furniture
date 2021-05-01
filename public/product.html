@@ -46,7 +46,7 @@
         <section id="section2" class="flex-col"></section>
     </main>
     <section class="reviews-section flex-col">
-        <h1 class="pd-b-15 divide-b font-primary txt-lg fg-primary">Reviews</h1>
+        <h1 class="pd-b-15 divide-b font-primary txt-lg fg-primary">Ревюта</h1>
     </section>
     <footer>
 
@@ -75,6 +75,20 @@
     <i class="fas fa-shopping-basket m-auto txt-lg"></i>
 </div>
 
+<template id="template-add-review">
+    <section id="add-review">
+        <h1 class="font-primary txt-md fg-primary mb-5">Добави ревю</h1>
+        <label for="input-rating">Рейтинг:</label>
+        <input id="input-rating" type="number" value="1" min="1" max="5">
+        <label for="input-author">Автор:</label>
+        <input id="input-author" placeholder="Въведи своето име">
+        <label for="input-title">Заглавие на ревюто</label>
+        <input id="input-title" placeholder="Напиши заглавие">
+        <label for="input-review">Описание:</label>
+        <textarea id="input-review" placeholder="Напиши твоето мнение за продукта"></textarea>
+        <button id="submit">Добави ревю</button>
+    </section>
+</template>
 <template id="template-item-btn-remove">
     <div class="cart-item-btn-remove clickable">
         <i class="fas fa-times txt-sm"></i>

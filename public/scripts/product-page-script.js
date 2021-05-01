@@ -101,6 +101,26 @@ $(document).ready(() => {
             distribution.querySelector('#rating-count').appendChild(count)
         }
 
+        //add new review section
+        const reviewForm = document.querySelector('#template-add-review').content.cloneNode(true)
+        reviewSection.appendChild(reviewForm)
+
+        const btnSubmitReview = document.querySelector('#add-review #submit')
+        btnSubmitReview.addEventListener('click', () => {
+            const reviewForm = $('#add-review');
+
+
+            reviewForm.css('display', 'none')
+        })
+
+        const btnAddReview = document.querySelector('.btn-review')
+        btnAddReview.addEventListener('click', () => {
+            const reviewForm = $('#add-review');
+            reviewForm.css('display', 'flex')
+
+            window.scrollTo(0, reviewForm[0].offsetTop - 150)
+        })
+
         // add filters
         const filters = document.querySelector('#template-filters').content.cloneNode(true)
         reviewSection.appendChild(filters)
