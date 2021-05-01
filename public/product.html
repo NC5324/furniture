@@ -46,7 +46,6 @@
         <section id="section2" class="flex-col"></section>
     </main>
     <section class="reviews-section flex-col">
-        <h1 class="pd-b-15 divide-b font-primary txt-lg fg-primary">Ревюта</h1>
     </section>
     <footer>
 
@@ -75,6 +74,9 @@
     <i class="fas fa-shopping-basket m-auto txt-lg"></i>
 </div>
 
+<template id="template-reviews-section-header">
+    <h1 class="pd-b-15 divide-b font-primary txt-lg fg-primary">Ревюта</h1>
+</template>
 <template id="template-add-review">
     <section id="add-review">
         <h1 class="font-primary txt-md fg-primary mb-5">Добави ревю</h1>
@@ -86,7 +88,10 @@
         <input id="input-title" placeholder="Напиши заглавие">
         <label for="input-review">Описание:</label>
         <textarea id="input-review" placeholder="Напиши твоето мнение за продукта"></textarea>
-        <button id="submit">Добави ревю</button>
+        <div id="add-review-actions" class="flex-row">
+            <button id="submit">Добави ревю</button>
+            <button id="cancel">Откажи</button>
+        </div>
     </section>
 </template>
 <template id="template-item-btn-remove">
@@ -167,7 +172,7 @@
                 <h1 class="review-title txt-lg font-primary fg-primary">Review Title</h1>
                 <div class="review-stars flex-row mt-10"></div>
             </div>
-            <p class="review-text mt-10 font-secondary fg-primary txt-md" style="flex: 0 1 auto">
+            <p class="review-text mt-10 font-secondary fg-primary txt-md" style="flex: 0 1 auto; word-break: break-word">
                 Review text
             </p>
             <div class="review-footer flex-row mt-10">

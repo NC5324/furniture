@@ -164,7 +164,7 @@
     resize: vertical;
 }
 
-#add-review > #submit {
+#add-review-actions > #submit {
     outline: 0;
     padding: 10px;
     max-width: 200px;
@@ -181,9 +181,30 @@
     cursor: pointer;
 }
 
-#add-review > #submit:hover {
+#add-review-actions > #submit:hover {
     background-color: #246000;
 }
+
+/*#add-review-actions > #cancel {
+    outline: 0;
+    padding: 10px;
+    max-width: 200px;
+
+    font-family: "Roboto", "Open Sans", "Arial", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+
+    border: 1px solid #245501;
+    border-radius: 5px;
+    background-color: #245501;
+    color: white;
+
+    cursor: pointer;
+}
+
+#add-review-actions > #cancel:hover {
+    background-color: #246000;
+}*/
 
 @media screen and (max-width: 768px) {
     .main-content {
@@ -199,6 +220,10 @@
 
     #section2 {
         flex-grow: 0;
+    }
+
+    #add-review {
+        width: 100%;
     }
 
     #reviews-details {
