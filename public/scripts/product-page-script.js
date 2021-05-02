@@ -1,5 +1,5 @@
 const product = JSON.parse(localStorage.getItem('product'))
-apiUrl = 'http://localhost:3000/api'
+apiUrl = 'https://unique-fragrant-hospital.glitch.me/api'
 
 async function getReviews() {
     try {
