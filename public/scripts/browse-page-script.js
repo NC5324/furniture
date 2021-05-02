@@ -1,4 +1,4 @@
-const apiUrl = 'http://localhost:3000/api'
+apiUrl = 'http://localhost:3000/api'
 
 async function getAllCategories() {
     try {

@@ -1,3 +1,5 @@
+apiUrl = 'http://localhost:3000/api'
+
 async function getCategoryByName(name) {
     const request = {
         name: name

@@ -1,5 +1,5 @@
 const product = JSON.parse(localStorage.getItem('product'))
-const apiUrl = 'http://localhost:3000/api'
+apiUrl = 'http://localhost:3000/api'
 
 async function getReviews() {
     try {

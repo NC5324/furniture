@@ -8,6 +8,7 @@ import category from './routes/category.js'
 import review from './routes/review.js'
 
 const app = express()
+const PORT = process.env.PORT || 3000
 
 app.use(cors())
 app.use(express.json())
@@ -30,10 +31,14 @@ app.use(jwt({
     }
 }))*/
 
+app.get('/', (req, res, next) => {
+  console.log(req.hostname)
+})
+
 app.use('/api/furniture', furniture)
 app.use('/api/category', category)
 app.use('/api/review', review)
 
-app.listen(3000, () => {
-  console.log('App running at http://localhost:3000/')
+app.listen(PORT, () => {
+  console.log(`App running at http://localhost:${PORT}/`)
 })
